@@ -1,0 +1,8 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/ops/status.json"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Access-Control-Allow-Origin = "*"

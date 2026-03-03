@@ -1,0 +1,101 @@
+{
+  "lastUpdated": "2026-03-03T19:20:00-03:00",
+  "phones": {
+    "motoG": {
+      "name": "Moto G",
+      "online": true,
+      "ip": "100.111.83.8",
+      "battery": 72,
+      "whatsappRunning": true,
+      "lastSeen": "2026-03-03T19:18:00-03:00"
+    },
+    "tcl": {
+      "name": "TCL",
+      "online": false,
+      "ip": "100.111.83.12",
+      "battery": null,
+      "whatsappRunning": false,
+      "lastSeen": "2026-03-02T14:30:00-03:00"
+    }
+  },
+  "pc": {
+    "online": true,
+    "ip": "100.79.77.119",
+    "ollama": {
+      "running": true,
+      "modelsLoaded": ["glm-4.7-flash:latest"],
+      "modelsAvailable": ["glm-4.7-flash:latest", "llama3.1:8b"],
+      "gpuUsage": 34,
+      "vramUsed": "8.2 GB",
+      "vramTotal": "24 GB"
+    },
+    "comfyui": {
+      "running": true,
+      "port": 8188
+    },
+    "powerDraw": "142W",
+    "uptime": "3d 7h 22m"
+  },
+  "pipeline": {
+    "NOVO": 12,
+    "CONTACTED": 8,
+    "RESPONDED": 5,
+    "INTERESTED": 3,
+    "ONBOARDING": 2,
+    "LIVE": 1,
+    "ACTIVATED": 0,
+    "DECLINED": 4
+  },
+  "conversations": {
+    "today": {
+      "sent": 6,
+      "received": 3,
+      "responseRate": 50
+    },
+    "thisWeek": {
+      "sent": 23,
+      "received": 11,
+      "responseRate": 48
+    },
+    "recent": [
+      { "restaurant": "Pizzaria Bella Napoli", "city": "Piracicaba", "status": "sent", "time": "2026-03-03T17:45:00-03:00" },
+      { "restaurant": "Restaurante Sabor da Terra", "city": "Campinas", "status": "replied", "time": "2026-03-03T16:30:00-03:00" },
+      { "restaurant": "Sushi Catanduva", "city": "Ribeirão Preto", "status": "sent", "time": "2026-03-03T15:10:00-03:00" },
+      { "restaurant": "Burger Point SP", "city": "Sorocaba", "status": "replied", "time": "2026-03-03T14:22:00-03:00" },
+      { "restaurant": "Cantina Nonna Rosa", "city": "Bauru", "status": "sent", "time": "2026-03-03T11:05:00-03:00" },
+      { "restaurant": "Açaí do Breno", "city": "Jundiaí", "status": "read", "time": "2026-03-03T10:30:00-03:00" }
+    ]
+  },
+  "restaurants": {
+    "onboarded": 3,
+    "active": 1,
+    "totalLeads": 35
+  },
+  "errors": [
+    { "type": "health", "message": "TCL device unreachable — last seen 28h ago", "time": "2026-03-03T18:00:00-03:00", "severity": "warning" },
+    { "type": "cron", "message": "Heartbeat missed — Ollama health check timeout", "time": "2026-03-03T06:15:00-03:00", "severity": "info" },
+    { "type": "health", "message": "WhatsApp session refresh required on Moto G", "time": "2026-03-02T22:00:00-03:00", "severity": "warning" }
+  ],
+  "costs": {
+    "today": {
+      "tokens": 48200,
+      "cost": 0.00,
+      "breakdown": {
+        "glm-4.7-flash": { "tokens": 42000, "cost": 0.00 },
+        "claude-sonnet-4-5": { "tokens": 6200, "cost": 0.12 }
+      }
+    },
+    "thisWeek": {
+      "tokens": 312400,
+      "cost": 0.87,
+      "breakdown": {
+        "glm-4.7-flash": { "tokens": 280000, "cost": 0.00 },
+        "claude-sonnet-4-5": { "tokens": 32400, "cost": 0.87 }
+      }
+    },
+    "thisMonth": {
+      "tokens": 1240000,
+      "cost": 3.42
+    }
+  }
+}
