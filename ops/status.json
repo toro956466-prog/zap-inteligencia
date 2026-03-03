@@ -1,101 +1,196 @@
 {
-  "lastUpdated": "2026-03-03T19:20:00-03:00",
+  "updatedAt": "2026-03-03T20:59:02-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
-      "online": true,
-      "ip": "100.111.83.8",
-      "battery": 72,
-      "whatsappRunning": true,
-      "lastSeen": "2026-03-03T19:18:00-03:00"
+      "status": "online",
+      "battery": 71,
+      "temperature": 24.0,
+      "ramTotal": 3730,
+      "ramAvailable": 1385,
+      "whatsapp": true,
+      "whatsappPid": 30075,
+      "adbAddress": "100.111.83.8:38641"
     },
     "tcl": {
       "name": "TCL",
-      "online": false,
-      "ip": "100.111.83.12",
-      "battery": null,
-      "whatsappRunning": false,
-      "lastSeen": "2026-03-02T14:30:00-03:00"
+      "status": "online",
+      "battery": 100,
+      "temperature": 25.0,
+      "ramTotal": 3752,
+      "ramAvailable": 1759,
+      "whatsapp": false,
+      "whatsappPid": null,
+      "adbAddress": "100.73.184.62:44411"
     }
   },
   "pc": {
-    "online": true,
-    "ip": "100.79.77.119",
-    "ollama": {
-      "running": true,
-      "modelsLoaded": ["glm-4.7-flash:latest"],
-      "modelsAvailable": ["glm-4.7-flash:latest", "llama3.1:8b"],
-      "gpuUsage": 34,
-      "vramUsed": "8.2 GB",
-      "vramTotal": "24 GB"
-    },
-    "comfyui": {
-      "running": true,
-      "port": 8188
-    },
-    "powerDraw": "142W",
-    "uptime": "3d 7h 22m"
+    "status": "online",
+    "ollama": true,
+    "comfyui": true,
+    "models": [
+      "qwen3.5:9b",
+      "qwen3.5:4b",
+      "qwen3:8b",
+      "qwen3:0.6b",
+      "glm-4.7-flash:latest",
+      "mixtral:8x7b",
+      "llama3:8b",
+      "llava:7b"
+    ],
+    "gpu": "RTX 4090",
+    "vram": "24GB",
+    "ram": "64GB",
+    "ip": "100.79.77.119"
   },
   "pipeline": {
-    "NOVO": 12,
-    "CONTACTED": 8,
-    "RESPONDED": 5,
-    "INTERESTED": 3,
-    "ONBOARDING": 2,
-    "LIVE": 1,
-    "ACTIVATED": 0,
-    "DECLINED": 4
+    "total": 792,
+    "novo": 82,
+    "contacted": 150,
+    "responded": 7,
+    "interested": 5,
+    "onboarding": 3,
+    "live": 5,
+    "activated": 0,
+    "declined": 6,
+    "noStatus": 428,
+    "todaySent": 21,
+    "todayResponses": 1
   },
-  "conversations": {
-    "today": {
-      "sent": 6,
-      "received": 3,
-      "responseRate": 50
+  "conversations": [
+    {
+      "restaurant": "Área de Lazer Dantas",
+      "city": "Ribeirão Preto",
+      "status": "replied",
+      "time": "2026-03-03T20:59:02-03:00",
+      "note": "Replied 'Pode sim, se for gratuito' - HOT LEAD"
     },
-    "thisWeek": {
-      "sent": 23,
-      "received": 11,
-      "responseRate": 48
+    {
+      "restaurant": "Chácara Tô Tranquilo",
+      "city": "Pres. Prudente",
+      "status": "read",
+      "time": "2026-03-03T10:21:00-03:00"
     },
-    "recent": [
-      { "restaurant": "Pizzaria Bella Napoli", "city": "Piracicaba", "status": "sent", "time": "2026-03-03T17:45:00-03:00" },
-      { "restaurant": "Restaurante Sabor da Terra", "city": "Campinas", "status": "replied", "time": "2026-03-03T16:30:00-03:00" },
-      { "restaurant": "Sushi Catanduva", "city": "Ribeirão Preto", "status": "sent", "time": "2026-03-03T15:10:00-03:00" },
-      { "restaurant": "Burger Point SP", "city": "Sorocaba", "status": "replied", "time": "2026-03-03T14:22:00-03:00" },
-      { "restaurant": "Cantina Nonna Rosa", "city": "Bauru", "status": "sent", "time": "2026-03-03T11:05:00-03:00" },
-      { "restaurant": "Açaí do Breno", "city": "Jundiaí", "status": "read", "time": "2026-03-03T10:30:00-03:00" }
+    {
+      "restaurant": "Chácara São José",
+      "city": "Pres. Prudente",
+      "status": "sent",
+      "time": "2026-03-03T12:57:00-03:00"
+    },
+    {
+      "restaurant": "Chácara Princesa",
+      "city": "Marília",
+      "status": "sent",
+      "time": "2026-03-03T14:35:00-03:00"
+    },
+    {
+      "restaurant": "Rancho Águia Dourada",
+      "city": "Pres. Prudente",
+      "status": "sent",
+      "time": "2026-03-03T14:30:00-03:00"
+    },
+    {
+      "restaurant": "Chácara Paraíso Bauru",
+      "city": "Bauru",
+      "status": "sent",
+      "time": "2026-03-03T14:33:00-03:00"
+    }
+  ],
+  "restaurants": {
+    "totalLeads": 792,
+    "onboarded": 3,
+    "active": 5,
+    "profiles": [
+      {
+        "name": "Área de Lazer Dantas",
+        "city": "Ribeirão Preto",
+        "status": "interested",
+        "soul": "200 pessoas, salão grande, Rua Japurá 3345"
+      },
+      {
+        "name": "Chácara Princesa",
+        "city": "Marília",
+        "status": "contacted",
+        "soul": "300 pessoas climatizado, 9 quartos, gerador, 3.3K IG"
+      },
+      {
+        "name": "Chácara Paraíso Bauru",
+        "city": "Bauru",
+        "status": "contacted",
+        "soul": "5000m², 500 pessoas, 4 quartos, 7 banheiros"
+      },
+      {
+        "name": "Chácara São José",
+        "city": "Pres. Prudente",
+        "status": "contacted",
+        "soul": "4,374 IG followers, strong social presence"
+      },
+      {
+        "name": "Chácara Tô Tranquilo",
+        "city": "Pres. Prudente",
+        "status": "contacted",
+        "soul": "Professional website, 4 suítes, salão 100 pessoas"
+      }
     ]
   },
-  "restaurants": {
-    "onboarded": 3,
-    "active": 1,
-    "totalLeads": 35
-  },
   "errors": [
-    { "type": "health", "message": "TCL device unreachable — last seen 28h ago", "time": "2026-03-03T18:00:00-03:00", "severity": "warning" },
-    { "type": "cron", "message": "Heartbeat missed — Ollama health check timeout", "time": "2026-03-03T06:15:00-03:00", "severity": "info" },
-    { "type": "health", "message": "WhatsApp session refresh required on Moto G", "time": "2026-03-02T22:00:00-03:00", "severity": "warning" }
+    {
+      "type": "cron",
+      "service": "Health Check",
+      "message": "Job execution timed out (90s)",
+      "time": "2026-03-03T17:21:00-03:00",
+      "severity": "warning"
+    },
+    {
+      "type": "health",
+      "service": "WhatsApp TCL",
+      "message": "WhatsApp Business not running on TCL",
+      "time": "2026-03-03T20:59:02-03:00",
+      "severity": "warning"
+    },
+    {
+      "type": "cron",
+      "service": "Health Check",
+      "message": "Cron model override ignored — using Opus instead of GLM",
+      "time": "2026-03-03T09:00:00-03:00",
+      "severity": "critical"
+    },
+    {
+      "type": "health",
+      "service": "ADB TCL",
+      "message": "Port changed from 37859 to 44411 after reboot",
+      "time": "2026-03-03T14:00:00-03:00",
+      "severity": "info"
+    }
   ],
   "costs": {
     "today": {
-      "tokens": 48200,
-      "cost": 0.00,
-      "breakdown": {
-        "glm-4.7-flash": { "tokens": 42000, "cost": 0.00 },
-        "claude-sonnet-4-5": { "tokens": 6200, "cost": 0.12 }
+      "opus": {
+        "tokens": 850000,
+        "cost": 12.75
+      },
+      "sonnet": {
+        "tokens": 45000,
+        "cost": 0.27
+      },
+      "glm": {
+        "tokens": 0,
+        "cost": 0
       }
     },
-    "thisWeek": {
-      "tokens": 312400,
-      "cost": 0.87,
-      "breakdown": {
-        "glm-4.7-flash": { "tokens": 280000, "cost": 0.00 },
-        "claude-sonnet-4-5": { "tokens": 32400, "cost": 0.87 }
+    "mtd": {
+      "opus": {
+        "tokens": 9200000,
+        "cost": 138.0
+      },
+      "sonnet": {
+        "tokens": 320000,
+        "cost": 1.92
+      },
+      "glm": {
+        "tokens": 0,
+        "cost": 0
       }
-    },
-    "thisMonth": {
-      "tokens": 1240000,
-      "cost": 3.42
     }
   }
 }
