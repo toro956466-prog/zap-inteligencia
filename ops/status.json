@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-03T21:00:32-03:00",
+  "updatedAt": "2026-03-03T21:03:20-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -25,50 +25,63 @@
     }
   },
   "pc": {
-    "status": "online",
-    "ollama": true,
-    "comfyui": true,
-    "models": [
-      "qwen3.5:9b",
-      "qwen3.5:4b",
-      "qwen3:8b",
-      "qwen3:0.6b",
-      "glm-4.7-flash:latest",
-      "mixtral:8x7b",
-      "llama3:8b",
-      "llava:7b"
-    ],
+    "online": true,
+    "ip": "100.79.77.119",
     "gpu": "RTX 4090",
-    "vram": "24GB",
     "ram": "64GB",
-    "ip": "100.79.77.119"
+    "powerDraw": "~76W idle",
+    "uptime": "3d 14h",
+    "ollama": {
+      "running": true,
+      "modelsLoaded": [
+        "qwen3.5:9b",
+        "qwen3.5:4b",
+        "qwen3:8b",
+        "glm-4.7-flash",
+        "mixtral:8x7b",
+        "llama3:8b",
+        "llava:7b"
+      ],
+      "gpuUsage": 12,
+      "vramUsed": "4.2GB",
+      "vramTotal": "24GB"
+    },
+    "comfyui": {
+      "running": true,
+      "port": 8188
+    }
   },
   "pipeline": {
-    "total": 0,
     "novo": 0,
     "contacted": 0,
     "responded": 0,
     "interested": 0,
     "onboarding": 0,
-    "live": 0,
+    "live": 1,
     "activated": 0,
-    "declined": 0,
-    "todaySent": 0,
-    "todayResponses": 0
+    "declined": 0
   },
-  "conversations": [],
+  "conversations": {
+    "recent": [
+      {
+        "restaurant": "Mariscão Maceió",
+        "city": "Maceió",
+        "status": "live",
+        "time": "2026-03-03T21:03:20-03:00"
+      }
+    ]
+  },
   "restaurants": {
-    "totalLeads": 0,
-    "onboarded": 0,
-    "active": 0,
-    "profiles": []
+    "totalLeads": 1,
+    "onboarded": 1,
+    "active": 1
   },
   "errors": [
     {
       "type": "health",
       "service": "WhatsApp TCL",
       "message": "WhatsApp Business not running on TCL",
-      "time": "2026-03-03T21:00:32-03:00",
+      "time": "2026-03-03T21:03:20-03:00",
       "severity": "warning"
     },
     {
@@ -77,13 +90,6 @@
       "message": "Cron model override ignored — using Opus instead of GLM",
       "time": "2026-03-03T09:00:00-03:00",
       "severity": "critical"
-    },
-    {
-      "type": "health",
-      "service": "ADB TCL",
-      "message": "Port changed from 37859 to 44411 after reboot",
-      "time": "2026-03-03T14:00:00-03:00",
-      "severity": "info"
     }
   ],
   "costs": {
@@ -98,10 +104,10 @@
       },
       "glm": {
         "tokens": 0,
-        "cost": 0
+        "cost": 0.0
       }
     },
-    "mtd": {
+    "thisWeek": {
       "opus": {
         "tokens": 9200000,
         "cost": 138.0
@@ -112,7 +118,7 @@
       },
       "glm": {
         "tokens": 0,
-        "cost": 0
+        "cost": 0.0
       }
     }
   }
