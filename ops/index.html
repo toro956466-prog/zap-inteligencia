@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚡ Zap Inteligência — Ops Dashboard</title>
+<title>⚡ Zap Inteligência — Ops</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg: #050505;
   --surface: #0a0a0a;
@@ -18,9 +17,9 @@
   --text: #fafafa;
   --text-muted: #a1a1aa;
   --text-dim: #71717a;
-  --purple: #F5A623;
-  --purple-dark: #FF8C00;
-  --purple-glow: rgba(245, 166, 35, 0.12);
+  --gold: #F5A623;
+  --gold-dark: #FF8C00;
+  --gold-glow: rgba(245, 166, 35, 0.12);
   --green: #22c55e;
   --green-dim: rgba(34, 197, 94, 0.15);
   --red: #ef4444;
@@ -32,121 +31,23 @@
   --radius: 12px;
   --radius-sm: 8px;
 }
+body { font-family: 'Outfit', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 48px; }
+header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+.logo h1 span { color: var(--text-muted); font-weight: 400; }
+.header-meta { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--text-dim); }
+.refresh-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-body {
-  font-family: 'Outfit', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.5;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
-
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 24px 20px 48px;
-}
-
-/* Header */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--purple), var(--purple-dark));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.logo h1 {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.logo h1 span {
-  color: var(--text-muted);
-  font-weight: 400;
-}
-
-.header-meta {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 13px;
-  color: var(--text-dim);
-}
-
-.refresh-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  display: inline-block;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  transition: border-color 0.15s;
-}
-
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color 0.15s; }
 .card:hover { border-color: var(--border-hover); }
-
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.card-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.card-title { font-size: 13px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
 .card-title .icon { font-size: 15px; }
-
-/* Span classes */
-.col-3 { grid-column: span 3; }
 .col-4 { grid-column: span 4; }
 .col-5 { grid-column: span 5; }
 .col-6 { grid-column: span 6; }
@@ -154,271 +55,80 @@ header {
 .col-8 { grid-column: span 8; }
 .col-12 { grid-column: span 12; }
 
-/* Status indicators */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
 .status-online { background: var(--green-dim); color: var(--green); }
 .status-offline { background: var(--red-dim); color: var(--red); }
 .status-warning { background: var(--yellow-dim); color: var(--yellow); }
-
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
+.dot { width: 6px; height: 6px; border-radius: 50%; }
 .dot-green { background: var(--green); }
 .dot-red { background: var(--red); }
 .dot-yellow { background: var(--yellow); }
 
-/* Device cards */
-.device {
-  background: var(--surface-2);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 10px;
-}
-
+.device { background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 10px; }
 .device:last-child { margin-bottom: 0; }
+.device-row { display: flex; align-items: center; justify-content: space-between; }
+.device-name { font-weight: 500; font-size: 14px; }
+.device-detail { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+.device-detail span { margin-right: 8px; }
 
-.device-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.device-name {
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.device-detail {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
-
-/* Pipeline bar */
-.pipeline-bar {
-  display: flex;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.pipeline-segment {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: white;
-  min-width: 28px;
-  transition: flex 0.3s;
-}
-
-.pipeline-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 3px;
-}
-
-.legend-count {
-  font-weight: 600;
-  color: var(--text);
-  margin-left: 2px;
-}
-
-/* Stat boxes */
-.stat-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.stat-box {
-  flex: 1;
-  min-width: 80px;
-  background: var(--surface-2);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  text-align: center;
-}
-
-.stat-value {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.stat-label {
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.stat-value.purple { color: var(--purple); }
+.stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-box { flex: 1; min-width: 80px; background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px; text-align: center; }
+.stat-value { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+.stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-value.gold { color: var(--gold); }
 .stat-value.green { color: var(--green); }
 .stat-value.blue { color: var(--blue); }
 
+.gpu-bar-container { margin-top: 10px; }
+.gpu-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+.gpu-bar { height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; }
+.gpu-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 3px; transition: width 0.5s; }
+
+.progress-bar { height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+.progress-fill { height: 100%; border-radius: 2px; }
+
+/* Restaurant cards */
+.restaurant-card { background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 10px; }
+.restaurant-card:last-child { margin-bottom: 0; }
+.restaurant-name { font-weight: 600; font-size: 14px; color: var(--text); }
+.restaurant-city { font-size: 12px; color: var(--text-dim); }
+.restaurant-soul { font-size: 12px; color: var(--text-muted); margin-top: 6px; font-style: italic; border-left: 2px solid var(--gold); padding-left: 8px; }
+.restaurant-rules { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px; }
+.rule-tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--gold-glow); color: var(--gold); font-weight: 500; }
+
 /* Conversation list */
 .convo-list { list-style: none; }
-
-.convo-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px;
-}
-
+.convo-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; gap: 8px; }
 .convo-item:last-child { border-bottom: none; }
-
-.convo-restaurant {
-  font-weight: 500;
-  color: var(--text);
-}
-
-.convo-city {
-  color: var(--text-dim);
-  font-size: 12px;
-}
-
-.convo-status {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.convo-status.sent { background: var(--blue-dim); color: var(--blue); }
-.convo-status.replied { background: var(--green-dim); color: var(--green); }
-.convo-status.read { background: var(--yellow-dim); color: var(--yellow); }
-
-.convo-time {
-  color: var(--text-dim);
-  font-size: 11px;
-  min-width: 50px;
-  text-align: right;
-}
+.convo-restaurant { font-weight: 500; color: var(--text); }
+.convo-from { color: var(--text-dim); font-size: 12px; }
+.convo-preview { color: var(--text-muted); font-size: 12px; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
+.convo-status { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.convo-status.active { background: var(--green-dim); color: var(--green); }
+.convo-status.waiting { background: var(--yellow-dim); color: var(--yellow); }
+.convo-status.closed { background: rgba(107,114,128,0.15); color: #9ca3af; }
+.convo-time { color: var(--text-dim); font-size: 11px; min-width: 50px; text-align: right; }
 
 /* Error list */
 .error-list { list-style: none; }
-
-.error-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 12px;
-  background: var(--surface-2);
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
-  font-size: 13px;
-}
-
+.error-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; background: var(--surface-2); border-radius: var(--radius-sm); margin-bottom: 8px; font-size: 13px; }
 .error-item:last-child { margin-bottom: 0; }
-
 .error-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 .error-msg { color: var(--text-muted); flex: 1; }
 .error-time { color: var(--text-dim); font-size: 11px; white-space: nowrap; }
 
-/* Cost table */
-.cost-grid {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 8px 16px;
-  font-size: 13px;
-}
+.empty-state { text-align: center; padding: 24px; color: var(--text-dim); font-size: 13px; }
 
-.cost-grid .label { color: var(--text-muted); }
-.cost-grid .tokens { color: var(--text-dim); text-align: right; }
-.cost-grid .amount { color: var(--text); font-weight: 600; text-align: right; }
-.cost-grid .total { color: var(--purple); font-weight: 700; font-size: 15px; }
+.loading { display: flex; align-items: center; justify-content: center; min-height: 200px; color: var(--text-dim); font-size: 14px; }
 
-.cost-divider {
-  grid-column: 1 / -1;
-  border-top: 1px solid var(--border);
-  margin: 4px 0;
-}
-
-/* GPU bar */
-.gpu-bar-container {
-  margin-top: 10px;
-}
-
-.gpu-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-bottom: 4px;
-}
-
-.gpu-bar {
-  height: 6px;
-  background: var(--surface);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.gpu-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--purple), var(--purple-dark));
-  border-radius: 3px;
-  transition: width 0.5s;
-}
-
-/* Loading */
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  color: var(--text-dim);
-  font-size: 14px;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .container { padding: 16px 12px 32px; }
   .grid { gap: 12px; }
-  .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-12 {
-    grid-column: span 12;
-  }
+  .col-4, .col-5, .col-6, .col-7, .col-8, .col-12 { grid-column: span 12; }
   .stat-value { font-size: 22px; }
   .convo-item { flex-wrap: wrap; gap: 4px; }
 }
-
 @media (min-width: 769px) and (max-width: 1024px) {
-  .col-3 { grid-column: span 6; }
   .col-4 { grid-column: span 6; }
   .col-5 { grid-column: span 6; }
   .col-7 { grid-column: span 6; }
@@ -427,7 +137,6 @@ header {
 </style>
 </head>
 <body>
-
 <div class="container">
   <header>
     <div class="logo">
@@ -439,7 +148,6 @@ header {
       <span id="lastUpdated">—</span>
     </div>
   </header>
-
   <div id="dashboard" class="loading">Loading dashboard…</div>
 </div>
 
@@ -463,27 +171,13 @@ function formatTime(dateStr) {
   return new Date(dateStr).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 }
 
-function formatTokens(n) {
-  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-  return n;
+function pct(used, total) {
+  return Math.round((used / total) * 100);
 }
 
-const PIPELINE_COLORS = {
-  NOVO: '#8b5cf6',
-  CONTACTED: '#6366f1',
-  RESPONDED: '#3b82f6',
-  INTERESTED: '#06b6d4',
-  ONBOARDING: '#14b8a6',
-  LIVE: '#22c55e',
-  ACTIVATED: '#10b981',
-  DECLINED: '#6b7280'
-};
-
 function render(d) {
-  const total = Object.values(d.pipeline).reduce((a, b) => a + b, 0);
-
-  const phoneCards = [d.phones.motoG, d.phones.tcl].map(p => `
+  // Phones
+  const phones = Object.values(d.phones).map(p => `
     <div class="device">
       <div class="device-row">
         <span class="device-name">${p.name}</span>
@@ -493,43 +187,66 @@ function render(d) {
         </span>
       </div>
       <div class="device-detail">
-        ${p.online && p.battery ? `🔋 ${p.battery}%` : ''}
-        ${p.whatsappRunning
-          ? ' · <span style="color:var(--green)">WhatsApp ✓</span>'
-          : ' · <span style="color:var(--red)">WhatsApp ✗</span>'}
-        ${!p.online ? ` · Last seen ${timeAgo(p.lastSeen)}` : ''}
+        <span>🔋 ${p.battery != null ? p.battery + '%' : '—'}</span>
+        <span>🌡️ ${p.temperature != null ? p.temperature + '°C' : '—'}</span>
+        <span>${p.whatsappRunning
+          ? '<span style="color:var(--green)">WhatsApp ✓</span>'
+          : '<span style="color:var(--red)">WhatsApp ✗</span>'}</span>
       </div>
+      <div class="device-detail">
+        <span>RAM: ${p.ramAvailable != null ? Math.round(p.ramAvailable) + ' / ' + Math.round(p.ramTotal) + ' MB' : '—'}</span>
+        ${p.storage ? '<span>Storage: ' + p.storage + '</span>' : ''}
+      </div>
+      ${p.ramAvailable && p.ramTotal ? `
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${pct(p.ramTotal - p.ramAvailable, p.ramTotal)}%;background:${pct(p.ramTotal - p.ramAvailable, p.ramTotal) > 80 ? 'var(--red)' : 'var(--gold)'}"></div>
+        </div>
+      ` : ''}
     </div>
   `).join('');
 
-  const pipelineSegments = Object.entries(d.pipeline)
-    .filter(([, v]) => v > 0)
-    .map(([k, v]) => `
-      <div class="pipeline-segment" style="flex:${v};background:${PIPELINE_COLORS[k]}" title="${k}: ${v}">
-        ${v}
+  // PC
+  const models = d.pc.models || [];
+  const modelTags = models.map(m => `<span class="rule-tag" style="background:rgba(59,130,246,0.12);color:var(--blue)">${m}</span>`).join('');
+
+  // Restaurants
+  const restaurantCards = (d.restaurants.clients || []).map(r => `
+    <div class="restaurant-card">
+      <div class="device-row">
+        <div>
+          <div class="restaurant-name">${r.name}</div>
+          <div class="restaurant-city">${r.city || ''}</div>
+        </div>
+        <span class="status-badge ${r.active ? 'status-online' : 'status-warning'}">
+          <span class="dot ${r.active ? 'dot-green' : 'dot-yellow'}"></span>
+          ${r.active ? 'Active' : 'Setup'}
+        </span>
       </div>
-    `).join('');
-
-  const pipelineLegend = Object.entries(d.pipeline).map(([k, v]) => `
-    <div class="legend-item">
-      <span class="legend-dot" style="background:${PIPELINE_COLORS[k]}"></span>
-      ${k} <span class="legend-count">${v}</span>
+      ${r.soul ? `<div class="restaurant-soul">${r.soul}</div>` : ''}
+      ${r.rules && r.rules.length ? `
+        <div class="restaurant-rules">
+          ${r.rules.map(rule => `<span class="rule-tag">${rule}</span>`).join('')}
+        </div>
+      ` : ''}
     </div>
-  `).join('');
+  `).join('') || '<div class="empty-state">No restaurants yet</div>';
 
-  const convoItems = d.conversations.recent.map(c => `
+  // Conversations
+  const convos = (d.conversations || []).map(c => `
     <li class="convo-item">
       <div>
         <div class="convo-restaurant">${c.restaurant}</div>
-        <div class="convo-city">${c.city}</div>
+        <div class="convo-from">${c.customer || ''}</div>
       </div>
+      <div class="convo-preview">${c.lastMessage || ''}</div>
       <span class="convo-status ${c.status}">${c.status}</span>
       <span class="convo-time">${formatTime(c.time)}</span>
     </li>
-  `).join('');
+  `).join('') || '<div class="empty-state">No conversations yet</div>';
 
-  const errorItems = d.errors.map(e => {
-    const icon = e.severity === 'warning' ? '⚠️' : 'ℹ️';
+  // Errors
+  const errors = (d.errors || []).map(e => {
+    const icon = e.severity === 'critical' ? '🔴' : e.severity === 'warning' ? '⚠️' : 'ℹ️';
     return `
       <div class="error-item">
         <span class="error-icon">${icon}</span>
@@ -537,30 +254,23 @@ function render(d) {
         <span class="error-time">${timeAgo(e.time)}</span>
       </div>
     `;
-  }).join('');
-
-  const costToday = d.costs.today;
-  const costWeek = d.costs.thisWeek;
-  const costBreakdown = Object.entries(costWeek.breakdown).map(([model, info]) => `
-    <span class="label">${model}</span>
-    <span class="tokens">${formatTokens(info.tokens)}</span>
-    <span class="amount">$${info.cost.toFixed(2)}</span>
-  `).join('');
+  }).join('') || '<div class="empty-state">All clear ✅</div>';
 
   document.getElementById('dashboard').className = 'grid';
   document.getElementById('dashboard').innerHTML = `
-    <!-- Phone Status -->
-    <div class="card col-4">
+    <!-- Phones -->
+    <div class="card col-6">
       <div class="card-header">
         <span class="card-title"><span class="icon">📱</span> Phones</span>
+        <span style="font-size:12px;color:var(--text-dim)">${Object.keys(d.phones).length} devices</span>
       </div>
-      ${phoneCards}
+      ${phones}
     </div>
 
-    <!-- PC / Ollama -->
-    <div class="card col-4">
+    <!-- PC / Server -->
+    <div class="card col-6">
       <div class="card-header">
-        <span class="card-title"><span class="icon">🖥️</span> PC / Ollama</span>
+        <span class="card-title"><span class="icon">🖥️</span> Server</span>
         <span class="status-badge ${d.pc.online ? 'status-online' : 'status-offline'}">
           <span class="dot ${d.pc.online ? 'dot-green' : 'dot-red'}"></span>
           ${d.pc.online ? 'Online' : 'Offline'}
@@ -568,115 +278,62 @@ function render(d) {
       </div>
       <div class="device">
         <div class="device-row">
-          <span class="device-name">Ollama</span>
-          <span class="status-badge ${d.pc.ollama.running ? 'status-online' : 'status-offline'}">
-            <span class="dot ${d.pc.ollama.running ? 'dot-green' : 'dot-red'}"></span>
-            ${d.pc.ollama.running ? 'Running' : 'Down'}
-          </span>
+          <span class="device-name">${d.pc.gpu || 'GPU'}</span>
+          <span style="font-size:12px;color:var(--text-dim)">${d.pc.ram || ''} RAM</span>
         </div>
         <div class="device-detail">
-          Models: ${d.pc.ollama.modelsLoaded.join(', ')}
+          <span>🌡️ ${d.pc.temperature || '—'}</span>
+          <span>⚡ ${d.pc.powerDraw || '—'}</span>
+          <span>⏱️ ${d.pc.uptime || '—'}</span>
         </div>
-        <div class="device-detail">
-          VRAM: ${d.pc.ollama.vramUsed} / ${d.pc.ollama.vramTotal} · ${d.pc.powerDraw}
-        </div>
-        <div class="gpu-bar-container">
-          <div class="gpu-label"><span>GPU</span><span>${d.pc.ollama.gpuUsage}%</span></div>
-          <div class="gpu-bar"><div class="gpu-bar-fill" style="width:${d.pc.ollama.gpuUsage}%"></div></div>
-        </div>
+        ${d.pc.ollama ? `
+          <div style="margin-top:10px">
+            <div class="device-detail" style="color:var(--text-muted);font-weight:500">Ollama
+              <span class="status-badge ${d.pc.ollama.running ? 'status-online' : 'status-offline'}" style="margin-left:6px">
+                ${d.pc.ollama.running ? 'Running' : 'Down'}
+              </span>
+            </div>
+            <div class="device-detail">VRAM: ${d.pc.ollama.vramUsed || '—'} / ${d.pc.ollama.vramTotal || '—'}</div>
+            <div class="gpu-bar-container">
+              <div class="gpu-label"><span>GPU</span><span>${d.pc.ollama.gpuUsage || 0}%</span></div>
+              <div class="gpu-bar"><div class="gpu-bar-fill" style="width:${d.pc.ollama.gpuUsage || 0}%"></div></div>
+            </div>
+          </div>
+        ` : ''}
       </div>
-      <div class="device" style="margin-top:10px">
-        <div class="device-row">
-          <span class="device-name">ComfyUI</span>
-          <span class="status-badge ${d.pc.comfyui.running ? 'status-online' : 'status-offline'}">
-            <span class="dot ${d.pc.comfyui.running ? 'dot-green' : 'dot-red'}"></span>
-            ${d.pc.comfyui.running ? ':' + d.pc.comfyui.port : 'Down'}
-          </span>
+      ${models.length ? `
+        <div style="margin-top:12px">
+          <div class="device-detail" style="margin-bottom:6px;color:var(--text-muted);font-weight:500">Models (${models.length})</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">${modelTags}</div>
         </div>
-        <div class="device-detail">Uptime: ${d.pc.uptime}</div>
-      </div>
+      ` : ''}
     </div>
 
-    <!-- Restaurants summary -->
-    <div class="card col-4">
+    <!-- Restaurants -->
+    <div class="card col-5">
       <div class="card-header">
         <span class="card-title"><span class="icon">🍽️</span> Restaurants</span>
+        <span style="font-size:12px;color:var(--text-dim)">${(d.restaurants.clients || []).length} clients</span>
       </div>
-      <div class="stat-row">
-        <div class="stat-box">
-          <div class="stat-value purple">${d.restaurants.totalLeads}</div>
-          <div class="stat-label">Total Leads</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value blue">${d.restaurants.onboarded}</div>
-          <div class="stat-label">Onboarded</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-value green">${d.restaurants.active}</div>
-          <div class="stat-label">Active</div>
-        </div>
-      </div>
-      <div style="margin-top:16px">
-        <div class="stat-row">
-          <div class="stat-box">
-            <div class="stat-value" style="font-size:20px;color:var(--text)">${d.conversations.today.sent}</div>
-            <div class="stat-label">Sent Today</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-value" style="font-size:20px;color:var(--green)">${d.conversations.today.received}</div>
-            <div class="stat-label">Replies</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-value" style="font-size:20px;color:var(--purple)">${d.conversations.today.responseRate}%</div>
-            <div class="stat-label">Rate</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pipeline -->
-    <div class="card col-8">
-      <div class="card-header">
-        <span class="card-title"><span class="icon">📊</span> Pipeline</span>
-        <span style="font-size:13px;color:var(--text-dim)">${total} total leads</span>
-      </div>
-      <div class="pipeline-bar">${pipelineSegments}</div>
-      <div class="pipeline-legend">${pipelineLegend}</div>
-    </div>
-
-    <!-- Agent Costs -->
-    <div class="card col-4">
-      <div class="card-header">
-        <span class="card-title"><span class="icon">💰</span> Agent Costs</span>
-      </div>
-      <div class="cost-grid">
-        <span class="label" style="font-weight:600;color:var(--text)">This Week</span>
-        <span class="tokens">${formatTokens(costWeek.tokens)} tok</span>
-        <span class="amount total">$${costWeek.cost.toFixed(2)}</span>
-        <div class="cost-divider"></div>
-        ${costBreakdown}
-        <div class="cost-divider"></div>
-        <span class="label">Month to date</span>
-        <span class="tokens">${formatTokens(d.costs.thisMonth.tokens)} tok</span>
-        <span class="amount">$${d.costs.thisMonth.cost.toFixed(2)}</span>
-      </div>
+      ${restaurantCards}
     </div>
 
     <!-- Conversations -->
     <div class="card col-7">
       <div class="card-header">
-        <span class="card-title"><span class="icon">💬</span> Recent Conversations</span>
+        <span class="card-title"><span class="icon">💬</span> Customer Conversations</span>
+        <span style="font-size:12px;color:var(--text-dim)">${(d.conversations || []).length} active</span>
       </div>
-      <ul class="convo-list">${convoItems}</ul>
+      <ul class="convo-list">${convos}</ul>
     </div>
 
-    <!-- Errors -->
-    <div class="card col-5">
+    <!-- Errors & Alerts -->
+    <div class="card col-12">
       <div class="card-header">
         <span class="card-title"><span class="icon">⚠️</span> Errors & Alerts</span>
-        <span style="font-size:12px;color:var(--text-dim)">${d.errors.length} items</span>
+        <span style="font-size:12px;color:var(--text-dim)">${(d.errors || []).length} items</span>
       </div>
-      <div class="error-list">${errorItems}</div>
+      <div class="error-list">${errors}</div>
     </div>
   `;
 

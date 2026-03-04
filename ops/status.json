@@ -1,6 +1,5 @@
 {
-  "updatedAt": "2026-03-03T21:05:04-03:00",
-  "lastUpdated": "2026-03-03T21:05:04-03:00",
+  "lastUpdated": "2026-03-03T21:14:59-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -10,6 +9,7 @@
       "ramTotal": 3730,
       "ramAvailable": 1385,
       "whatsappRunning": true,
+      "storage": "42/64 GB",
       "adbAddress": "100.111.83.8:38641"
     },
     "tcl": {
@@ -20,6 +20,7 @@
       "ramTotal": 3752,
       "ramAvailable": 1759,
       "whatsappRunning": false,
+      "storage": "18/32 GB",
       "adbAddress": "100.73.184.62:44411"
     }
   },
@@ -28,64 +29,51 @@
     "ip": "100.79.77.119",
     "gpu": "RTX 4090",
     "ram": "64GB",
+    "temperature": "42°C",
     "powerDraw": "~76W idle",
     "uptime": "3d 14h",
+    "models": [
+      "qwen3.5:9b",
+      "qwen3.5:4b",
+      "qwen3:8b",
+      "qwen3:0.6b",
+      "glm-4.7-flash",
+      "mixtral:8x7b",
+      "llama3:8b",
+      "llava:7b"
+    ],
     "ollama": {
       "running": true,
-      "modelsLoaded": [
-        "qwen3.5:9b",
-        "qwen3.5:4b",
-        "qwen3:8b",
-        "glm-4.7-flash",
-        "mixtral:8x7b",
-        "llama3:8b",
-        "llava:7b"
-      ],
       "gpuUsage": 12,
       "vramUsed": "4.2GB",
       "vramTotal": "24GB"
-    },
-    "comfyui": {
-      "running": true,
-      "port": 8188
     }
   },
-  "pipeline": {
-    "novo": 0,
-    "contacted": 0,
-    "responded": 0,
-    "interested": 0,
-    "onboarding": 0,
-    "live": 1,
-    "activated": 0,
-    "declined": 0
-  },
-  "conversations": {
-    "today": {
-      "sent": 0,
-      "received": 0,
-      "responseRate": "0%"
-    },
-    "recent": [
+  "restaurants": {
+    "clients": [
       {
-        "restaurant": "Mariscão Maceió",
+        "name": "Mariscão Maceió",
         "city": "Maceió",
-        "status": "live",
-        "time": "2026-03-03T21:05:04-03:00"
+        "active": true,
+        "phone": "Moto G",
+        "soul": "Restaurante de frutos do mar premium. Atendimento caloroso, foco em experiência do cliente.",
+        "rules": [
+          "Horário: 11h-23h",
+          "Reservas via WhatsApp",
+          "Cardápio digital",
+          "Promoções terça",
+          "Delivery disponível"
+        ]
       }
     ]
   },
-  "restaurants": {
-    "totalLeads": 1,
-    "onboarded": 1,
-    "active": 1
-  },
+  "conversations": [],
   "errors": [
     {
       "type": "health",
       "service": "WhatsApp TCL",
       "message": "WhatsApp Business not running on TCL",
-      "time": "2026-03-03T21:05:04-03:00",
+      "time": "2026-03-03T21:14:59-03:00",
       "severity": "warning"
     },
     {
@@ -93,51 +81,7 @@
       "service": "Health Check",
       "message": "Cron model override ignored — using Opus instead of GLM",
       "time": "2026-03-03T09:00:00-03:00",
-      "severity": "warning"
+      "severity": "critical"
     }
-  ],
-  "costs": {
-    "today": {
-      "total": 13.02,
-      "breakdown": {
-        "Opus": {
-          "tokens": 850000,
-          "cost": 12.75
-        },
-        "Sonnet": {
-          "tokens": 45000,
-          "cost": 0.27
-        },
-        "GLM": {
-          "tokens": 0,
-          "cost": 0.0
-        }
-      },
-      "tokens": 895000,
-      "cost": 13.02
-    },
-    "thisWeek": {
-      "total": 139.92,
-      "breakdown": {
-        "Opus": {
-          "tokens": 9200000,
-          "cost": 138.0
-        },
-        "Sonnet": {
-          "tokens": 320000,
-          "cost": 1.92
-        },
-        "GLM": {
-          "tokens": 0,
-          "cost": 0.0
-        }
-      },
-      "tokens": 9565000,
-      "cost": 139.92
-    },
-    "thisMonth": {
-      "tokens": 9565000,
-      "cost": 152.94
-    }
-  }
+  ]
 }
