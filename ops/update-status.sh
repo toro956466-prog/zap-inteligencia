@@ -233,6 +233,36 @@ if [ "$COMFYUI_RUNNING" = "true" ] && [ "$QUEUE_RUNNING" -eq 0 ] && [ "$QUEUE_PE
   fi
 fi
 
+# ─── Health State Tracking + Alerts ───
+HEALTH_STATE="/Users/toro/clawd/clients/health-state.json"
+if [ ! -f "$HEALTH_STATE" ]; then
+  echo '{}' > "$HEALTH_STATE"
+fi
+
+# Build current health status
+HEALTH_JSON=$(jq -n \
+  --argjson ollama "$OLLAMA_RUNNING" \
+  --argjson comfyui "$COMFYUI_RUNNING" \
+  --argjson motog "$MOTOG_ONLINE" \
+  --argjson tcl "$TCL_ONLINE" \
+  --argjson motogWa "${MOTOG_WA:-false}" \
+  '{ollama: $ollama, comfyui: $comfyui, motog: $motog, tcl: $tcl, motogWa: $motogWa}')
+
+# Compare with previous state and log changes
+PREV_STATE=$(cat "$HEALTH_STATE")
+echo "$HEALTH_JSON" > "$HEALTH_STATE"
+
+# Log any service that went down (for dashboard errors section)
+for SVC in ollama comfyui motog tcl motogWa; do
+  CURRENT=$(echo "$HEALTH_JSON" | jq -r ".$SVC")
+  PREVIOUS=$(echo "$PREV_STATE" | jq -r ".$SVC // true")
+  if [ "$CURRENT" = "false" ] && [ "$PREVIOUS" = "true" ]; then
+    echo "  ⚠️  $SVC went DOWN"
+  elif [ "$CURRENT" = "true" ] && [ "$PREVIOUS" = "false" ]; then
+    echo "  ✅ $SVC recovered"
+  fi
+done
+
 echo "✅ Status updated at $TIMESTAMP"
 echo "   Ollama: $OLLAMA_RUNNING (models: $LOADED_MODELS, VRAM: ${OLLAMA_VRAM_GB}GB)"
 echo "   ComfyUI: $COMFYUI_RUNNING (Torch: ${TORCH_VRAM_GB}GB)"
