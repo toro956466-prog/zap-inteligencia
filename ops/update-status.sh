@@ -166,16 +166,35 @@ else
   PROXY_UPTIME=0; PROXY_MESSAGES=0; PROXY_ERRORS=0; PROXY_CONTACTS=0
 fi
 
-MOTOG_DC_PID=$(adb -s "$MOTOG_ADB" shell "pidof com.openclaw.droidclaw" 2>/dev/null | tr -dc '0-9')
+MOTOG_DC_PID=$(adb -s "$MOTOG_ADB" shell "pidof com.thisux.droidclaw" 2>/dev/null | tr -dc '0-9')
 MOTOG_DROIDCLAW="false"
 [ -n "$MOTOG_DC_PID" ] && MOTOG_DROIDCLAW="true"
 
-TCL_DC_PID=$(adb -s "$TCL_ADB" shell "pidof com.openclaw.droidclaw" 2>/dev/null | tr -dc '0-9')
+TCL_DC_PID=$(adb -s "$TCL_ADB" shell "pidof com.thisux.droidclaw" 2>/dev/null | tr -dc '0-9')
 TCL_DROIDCLAW="false"
 [ -n "$TCL_DC_PID" ] && TCL_DROIDCLAW="true"
 
+# Conversations from proxy
+CONVO_DIR="/Users/toro/clawd/clients/mariscal-burger/conversations"
+CONVO_JSON="[]"
+if [ -d "$CONVO_DIR" ]; then
+  CONVO_JSON=$(ls -t "$CONVO_DIR"/*.json 2>/dev/null | head -20 | while read f; do
+    CONTACT=$(basename "$f" .json)
+    # Skip junk contacts
+    echo "$CONTACT" | grep -qE '^(unknown|StressTest|TestCustomer|TestFix|WhatsAppBusiness|Numbernotverified|.*missedcall.*|.*missedcalls.*)$' && continue
+    MSG_COUNT=$(jq 'length' "$f" 2>/dev/null || echo 0)
+    LAST_TS=$(jq -r '.[-1].ts // 0' "$f" 2>/dev/null || echo 0)
+    LAST_MSG=$(jq -r '.[-1].content // "" | .[0:80]' "$f" 2>/dev/null || echo "")
+    LAST_ROLE=$(jq -r '.[-1].role // ""' "$f" 2>/dev/null || echo "")
+    jq -n --arg name "$CONTACT" --argjson msgs "$MSG_COUNT" --argjson ts "$LAST_TS" --arg lastMsg "$LAST_MSG" --arg lastRole "$LAST_ROLE" \
+      '{name: $name, messages: $msgs, lastActivity: $ts, lastMessage: $lastMsg, lastRole: $lastRole}'
+  done | jq -s '.')
+fi
+CONVO_COUNT=$(echo "$CONVO_JSON" | jq 'length')
+
 echo "  Proxy: running=$PROXY_RUNNING msgs=$PROXY_MESSAGES contacts=$PROXY_CONTACTS"
 echo "  DroidClaw: MotoG=$MOTOG_DROIDCLAW TCL=$TCL_DROIDCLAW"
+echo "  Conversations: $CONVO_COUNT active"
 
 # ─── Update status.json ───
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S%z" | sed 's/\(..\)$/:\1/')
@@ -215,6 +234,7 @@ jq \
   --argjson proxyMessages "$PROXY_MESSAGES" \
   --argjson proxyErrors "$PROXY_ERRORS" \
   --argjson proxyContacts "$PROXY_CONTACTS" \
+  --argjson convos "$CONVO_JSON" \
   '
   .lastUpdated = $ts |
   .pc.online = $pcOnline |
@@ -259,7 +279,8 @@ jq \
     messages: $proxyMessages,
     errors: $proxyErrors,
     uniqueContacts: $proxyContacts
-  }
+  } |
+  .conversations = $convos
   ' "$STATUS_FILE" > "${STATUS_FILE}.tmp" && mv "${STATUS_FILE}.tmp" "$STATUS_FILE"
 
 # ─── Auto-unload idle Ollama models to free VRAM ───

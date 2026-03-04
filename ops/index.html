@@ -249,17 +249,11 @@ function render(d) {
   `).join('') || '<div class="empty-state">No restaurants yet</div>';
 
   // Conversations
-  const convos = (d.conversations || []).map(c => `
-    <li class="convo-item">
-      <div>
-        <div class="convo-restaurant">${c.restaurant}</div>
-        <div class="convo-from">${c.customer || ''}</div>
-      </div>
-      <div class="convo-preview">${c.lastMessage || ''}</div>
-      <span class="convo-status ${c.status}">${c.status}</span>
-      <span class="convo-time">${formatTime(c.time)}</span>
-    </li>
-  `).join('') || '<div class="empty-state">No conversations yet</div>';
+  const convos = (d.conversations || []).map(c => {
+    var ago = c.lastActivity ? formatTime(c.lastActivity) : '';
+    var roleIcon = c.lastRole === 'assistant' ? '🤖' : '👤';
+    return '<li class="convo-item"><div><div class="convo-restaurant">' + (c.name || 'Unknown') + '</div><div class="convo-from" style="font-size:11px;color:var(--text-dim)">' + (c.messages || 0) + ' msgs</div></div><div class="convo-preview">' + roleIcon + ' ' + (c.lastMessage || '') + '</div><span class="convo-time">' + ago + '</span></li>';
+  }).join('') || '<div class="empty-state">No conversations yet</div>';
 
   // Errors
   const errors = (d.errors || []).map(e => {
