@@ -112,7 +112,9 @@
           "tokens": 0,
           "cost": 0.0
         }
-      }
+      },
+      "tokens": 895000,
+      "cost": 13.02
     },
     "thisWeek": {
       "total": 139.92,
@@ -129,7 +131,9 @@
           "tokens": 0,
           "cost": 0.0
         }
-      }
+      },
+      "tokens": 9565000,
+      "cost": 139.92
     },
     "thisMonth": {
       "tokens": 9565000,
