@@ -1,696 +1,284 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zap Inteligente — Nunca mais perca um pedido no WhatsApp</title>
-  <meta name="description" content="Receba pedidos no WhatsApp automaticamente. Instalamos no seu restaurante em 15 minutos. 7 dias grátis.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    :root {
-      --green: #25D366;
-      --green-dark: #1da851;
-      --dark: #0a0a0a;
-      --gray: #1a1a1a;
-      --light: #f5f5f5;
-      --muted: #999;
-    }
-    
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--dark);
-      color: var(--light);
-      line-height: 1.6;
-    }
-    
-    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-    
-    /* Hero */
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
-    }
-    
-    .badge {
-      display: inline-block;
-      background: rgba(37, 211, 102, 0.1);
-      color: var(--green);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 24px;
-      border: 1px solid rgba(37, 211, 102, 0.2);
-    }
-    
-    h1 {
-      font-size: clamp(32px, 6vw, 52px);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    
-    h1 .highlight { color: var(--green); }
-    
-    .subtitle {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 540px;
-      margin: 0 auto 40px;
-    }
-    
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--green);
-      color: #000;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: 600;
-      font-family: inherit;
-      transition: background 0.2s, transform 0.1s;
-    }
-    
-    .cta-button:hover { background: var(--green-dark); transform: translateY(-1px); }
-    
-    .cta-sub {
-      display: block;
-      margin-top: 12px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    
-    /* Chat mockup */
-    .chat-section {
-      padding: 40px 0 60px;
-    }
-
-    .section-label {
-      text-align: center;
-      font-size: 14px;
-      color: var(--green);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-    
-    .chat-section h2 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 32px;
-    }
-    
-    .chat-window {
-      background: #111;
-      border-radius: 16px;
-      overflow: hidden;
-      max-width: 420px;
-      margin: 0 auto;
-      border: 1px solid #222;
-    }
-    
-    .chat-header {
-      background: #1a1a1a;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #222;
-    }
-    
-    .chat-avatar {
-      width: 40px;
-      height: 40px;
-      background: var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-    
-    .chat-name { font-weight: 600; font-size: 15px; }
-    .chat-status { font-size: 12px; color: var(--green); }
-    
-    .chat-messages {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-height: 300px;
-    }
-    
-    .msg {
-      max-width: 80%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    
-    .msg-in {
-      background: #1e1e1e;
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-    
-    .msg-out {
-      background: #054640;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-    
-    .msg-time {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-      text-align: right;
-    }
-    
-    /* Para quem */
-    .para-quem {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .para-quem h2 {
-      font-size: 28px;
-      margin-bottom: 32px;
-    }
-
-    .tipos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-
-    .tipo {
-      background: var(--gray);
-      border: 1px solid #222;
-      border-radius: 40px;
-      padding: 12px 24px;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .tipo .emoji { margin-right: 6px; }
-    
-    /* Features */
-    .features {
-      padding: 60px 0;
-    }
-    
-    .features h2 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 40px;
-    }
-    
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    
-    .feature-card {
-      background: var(--gray);
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid #222;
-    }
-    
-    .feature-icon { font-size: 28px; margin-bottom: 12px; }
-    .feature-card h3 { font-size: 16px; margin-bottom: 8px; font-weight: 600; }
-    .feature-card p { font-size: 14px; color: var(--muted); }
-
-    /* Proof */
-    .proof {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .proof h2 {
-      font-size: 28px;
-      margin-bottom: 32px;
-    }
-
-    .proof-card {
-      background: var(--gray);
-      border: 1px solid #222;
-      border-radius: 16px;
-      padding: 32px;
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .proof-quote {
-      font-size: 18px;
-      font-style: italic;
-      color: #ddd;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .proof-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .proof-avatar {
-      width: 44px;
-      height: 44px;
-      background: var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-
-    .proof-name { font-weight: 600; font-size: 15px; }
-    .proof-role { font-size: 13px; color: var(--muted); }
-
-    .proof-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 32px;
-    }
-
-    .stat-num {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--green);
-    }
-
-    .stat-label {
-      font-size: 13px;
-      color: var(--muted);
-    }
-    
-    /* How it works */
-    .how {
-      padding: 60px 0;
-    }
-    
-    .how h2 { text-align: center; font-size: 28px; margin-bottom: 40px; }
-    
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    
-    .step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    
-    .step-num {
-      min-width: 40px;
-      height: 40px;
-      background: rgba(37,211,102,0.1);
-      color: var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-    }
-    
-    .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-    .step p { font-size: 14px; color: var(--muted); }
-
-    /* Pricing */
-    .pricing {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .pricing h2 { font-size: 28px; margin-bottom: 12px; }
-    .pricing .subtitle { margin-bottom: 40px; }
-
-    .price-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .price-card {
-      background: var(--gray);
-      border-radius: 12px;
-      padding: 28px 20px;
-      border: 1px solid #222;
-      position: relative;
-    }
-
-    .price-card.popular {
-      border-color: var(--green);
-      background: linear-gradient(to bottom, rgba(37,211,102,0.05), var(--gray));
-    }
-
-    .popular-badge {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--green);
-      color: #000;
-      padding: 2px 12px;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .price-card h3 { font-size: 18px; margin-bottom: 8px; }
-
-    .price {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .price span { font-size: 16px; color: var(--muted); font-weight: 400; }
-
-    .price-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .price-features {
-      list-style: none;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    .price-features li {
-      padding: 4px 0;
-      color: #ccc;
-    }
-
-    .price-features li::before {
-      content: '✓ ';
-      color: var(--green);
-      font-weight: 600;
-    }
-    
-    /* Mid CTA */
-    .mid-cta {
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    /* Footer CTA */
-    .footer-cta {
-      padding: 60px 0 40px;
-      text-align: center;
-    }
-    
-    .footer-cta h2 { font-size: 28px; margin-bottom: 16px; }
-    .footer-cta p { color: var(--muted); margin-bottom: 24px; }
-    
-    footer {
-      padding: 20px 0;
-      text-align: center;
-      font-size: 13px;
-      color: #444;
-      border-top: 1px solid #1a1a1a;
-    }
-
-    /* Mobile */
-    @media (max-width: 480px) {
-      .hero { padding: 60px 0 40px; }
-      .cta-button { padding: 14px 24px; font-size: 16px; }
-      .chat-messages { min-height: 240px; }
-      .proof-stats { gap: 24px; }
-      .stat-num { font-size: 26px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zapinteligência — Seu Atendente Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#F5A623;--gold-light:#FFD26B;--gold-hot:#FF8C00;--black:#050505;--black-card:#0a0a0a;--black-up:#0f0f0f;--white:#f5f5f0;--g100:#e8e8e3;--g300:#a0a098;--g500:#6b6b63;--g700:#3a3a35;--g800:#222220;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+nav{position:fixed;top:0;width:100%;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(24px);background:rgba(5,5,5,0.8);border-bottom:1px solid rgba(245,166,35,0.06)}
+.logo{font-size:1.35rem;font-weight:700;letter-spacing:-0.03em;display:flex;align-items:center;gap:3px}
+.logo .zap{color:var(--gold)}.logo .intel{color:var(--white);font-weight:400}
+.logo-bolt{display:inline-block;font-size:1.1rem;margin-right:6px;filter:drop-shadow(0 0 6px rgba(245,166,35,0.5))}
+.nav-cta{background:var(--gold);color:var(--black);padding:10px 24px;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.8rem;letter-spacing:0.05em;transition:all 0.3s ease;text-transform:uppercase}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,166,35,0.25)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 60px;position:relative}
+.hero::after{content:'';position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:500px;height:600px;background:radial-gradient(ellipse,rgba(245,166,35,0.07) 0%,rgba(255,140,0,0.03) 40%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.06);border:1px solid rgba(245,166,35,0.12);padding:8px 22px;border-radius:100px;font-size:0.75rem;font-weight:500;color:var(--gold);margin-bottom:40px;animation:fadeUp 0.8s ease both;letter-spacing:0.04em;text-transform:uppercase}
+.badge::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 8px rgba(245,166,35,0.6)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.2rem);font-weight:400;line-height:1.06;letter-spacing:-0.02em;max-width:800px;animation:fadeUp 0.8s ease 0.1s both}
+h1 em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:clamp(0.95rem,1.8vw,1.1rem);color:var(--g300);max-width:480px;margin-top:24px;line-height:1.7;font-weight:300;animation:fadeUp 0.8s ease 0.2s both}
+.hero-ctas{display:flex;gap:14px;margin-top:44px;animation:fadeUp 0.8s ease 0.3s both;flex-wrap:wrap;justify-content:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);padding:16px 40px;border-radius:100px;text-decoration:none;font-weight:700;font-size:0.92rem;transition:all 0.3s ease;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 20px 50px rgba(245,166,35,0.2)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--g300);padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:500;font-size:0.92rem;border:1px solid rgba(255,255,255,0.08);transition:all 0.3s ease}
+.btn-ghost:hover{border-color:rgba(245,166,35,0.25);color:var(--gold)}
+.hero-stat{margin-top:56px;animation:fadeUp 0.8s ease 0.4s both;display:flex;align-items:center;gap:24px}
+.hero-stat-item{text-align:center}
+.hero-stat-item .num{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold)}
+.hero-stat-item .label{font-size:0.7rem;color:var(--g500);margin-top:2px;text-transform:uppercase;letter-spacing:0.08em}
+.hero-stat-divider{width:1px;height:36px;background:rgba(255,255,255,0.06)}
+.mockup-section{padding:20px 24px 80px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.phone-frame{width:340px;background:var(--black-up);border-radius:40px;padding:10px;border:1px solid rgba(245,166,35,0.08);box-shadow:0 60px 120px rgba(0,0,0,0.6),0 0 80px rgba(245,166,35,0.03);animation:floatUp 1s ease 0.5s both}
+.phone-screen{background:var(--black);border-radius:32px;overflow:hidden}
+.chat-header{background:var(--black-up);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-hot));display:flex;align-items:center;justify-content:center;font-size:0.85rem;box-shadow:0 0 12px rgba(245,166,35,0.2)}
+.chat-name{font-weight:600;font-size:0.88rem}.chat-status{font-size:0.65rem;color:var(--gold);font-weight:500}
+.chat-body{padding:16px;display:flex;flex-direction:column;gap:8px;min-height:400px;background:#060606}
+.msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:0.78rem;line-height:1.55;animation:msgAppear 0.4s ease both}
+.msg-in{background:#141414;align-self:flex-start;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,0.03)}
+.msg-out{background:linear-gradient(135deg,rgba(245,166,35,0.12),rgba(245,166,35,0.06));align-self:flex-end;border-bottom-right-radius:4px;border:1px solid rgba(245,166,35,0.1)}
+.msg-time{font-size:0.55rem;color:rgba(255,255,255,0.2);margin-top:4px;text-align:right}
+.msg:nth-child(1){animation-delay:0.8s}.msg:nth-child(2){animation-delay:1.4s}.msg:nth-child(3){animation-delay:2.2s}.msg:nth-child(4){animation-delay:3.0s}.msg:nth-child(5){animation-delay:3.8s}.msg:nth-child(6){animation-delay:4.6s}.msg:nth-child(7){animation-delay:5.4s}
+.typing{align-self:flex-end;background:linear-gradient(135deg,rgba(245,166,35,0.1),rgba(245,166,35,0.04));padding:10px 16px;border-radius:14px;border-bottom-right-radius:4px;display:flex;gap:4px;animation:msgAppear 0.4s ease 1.0s both;border:1px solid rgba(245,166,35,0.08)}
+.typing span{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:typingDot 1.4s infinite;opacity:0.5}
+.typing span:nth-child(2){animation-delay:0.2s}.typing span:nth-child(3){animation-delay:0.4s}
+.section-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:16px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:400;letter-spacing:-0.01em;max-width:650px;margin:0 auto;line-height:1.18}
+.section-divider{border:none;border-top:1px solid rgba(245,166,35,0.06)}
+.problem{padding:100px 24px;text-align:center}
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;max-width:900px;margin:56px auto 0}
+.problem-card{background:var(--black-card);border:1px solid rgba(255,255,255,0.04);border-radius:var(--r);padding:32px 26px;text-align:left;transition:all 0.35s ease;position:relative;overflow:hidden}
+.problem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,0.2),transparent);opacity:0;transition:opacity 0.35s ease}
+.problem-card:hover::before{opacity:1}.problem-card:hover{border-color:rgba(245,166,35,0.1)}
+.problem-card .icon{font-size:1.4rem;margin-bottom:16px}
+.problem-card h3{font-size:0.95rem;font-weight:600;margin-bottom:6px}
+.problem-card p{font-size:0.82rem;color:var(--g300);line-height:1.65;font-weight:300}
+.how{padding:100px 24px}.how-header{text-align:center;margin-bottom:64px}
+.how-header p{color:var(--g300);margin-top:14px;font-size:0.95rem;font-weight:300}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:960px;margin:0 auto}
+.step{padding:36px 28px;background:var(--black-card);border:1px solid rgba(255,255,255,0.04);border-radius:var(--r);transition:all 0.35s ease}
+.step:hover{border-color:rgba(245,166,35,0.15);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,rgba(245,166,35,0.15),rgba(245,166,35,0.05));color:var(--gold);font-weight:700;font-size:0.8rem;margin-bottom:20px;border:1px solid rgba(245,166,35,0.1)}
+.step h3{font-size:1rem;font-weight:600;margin-bottom:8px}.step p{font-size:0.82rem;color:var(--g300);line-height:1.65;font-weight:300}
+.features{padding:100px 24px}.features-header{text-align:center;margin-bottom:64px}
+.features-header p{color:var(--g300);margin-top:14px;font-size:0.95rem;font-weight:300;max-width:420px;margin-left:auto;margin-right:auto}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;max-width:960px;margin:0 auto}
+.feature{padding:28px 24px;background:var(--black-card);border:1px solid rgba(255,255,255,0.04);border-radius:var(--r);transition:all 0.35s ease}
+.feature:hover{border-color:rgba(245,166,35,0.12)}
+.feature-icon{font-size:1.3rem;margin-bottom:14px}.feature h3{font-size:0.9rem;font-weight:600;margin-bottom:5px}.feature p{font-size:0.8rem;color:var(--g300);line-height:1.6;font-weight:300}
+.comparison{padding:100px 24px;text-align:center}.comparison-header{margin-bottom:48px}
+.comp-table{max-width:680px;margin:0 auto;border-collapse:collapse;width:100%}
+.comp-table th,.comp-table td{padding:16px 20px;text-align:left;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.04)}
+.comp-table th{color:var(--g500);font-weight:600;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em}
+.comp-table th:last-child,.comp-table td:last-child{text-align:center}
+.comp-table th:nth-child(2),.comp-table td:nth-child(2){text-align:center;color:var(--g500)}
+.comp-table td:last-child{color:var(--gold);font-weight:600}
+.comp-highlight{background:rgba(245,166,35,0.02)}
+.testimonial{padding:80px 24px;text-align:center}
+.test-card{max-width:540px;margin:0 auto;padding:44px;background:var(--black-card);border:1px solid rgba(245,166,35,0.08);border-radius:20px;position:relative}
+.test-card::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.test-stars{color:var(--gold);font-size:0.9rem;margin-bottom:16px;letter-spacing:2px}
+.test-quote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.2vw,1.45rem);font-style:italic;line-height:1.5;color:var(--g100)}
+.test-author{margin-top:24px;font-size:0.82rem;color:var(--g500)}.test-author strong{color:var(--white)}
+.pricing{padding:100px 24px;text-align:center}
+.pricing-sub{color:var(--g300);font-size:0.95rem;font-weight:300;margin-top:14px;max-width:400px;margin-left:auto;margin-right:auto}
+.price-card{max-width:420px;margin:48px auto 0;padding:48px 40px;background:var(--black-card);border:1px solid rgba(245,166,35,0.12);border-radius:24px;position:relative;overflow:hidden}
+.price-card::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-hot),transparent)}
+.price-card::after{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(245,166,35,0.05) 0%,transparent 70%);pointer-events:none}
+.price-eyebrow{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);margin-bottom:16px}
+.price-amount{font-family:'Playfair Display',serif;font-size:4rem;letter-spacing:-0.03em;line-height:1}
+.price-amount span{font-size:1.1rem;color:var(--g500);font-family:'Outfit',sans-serif}
+.price-daily{color:var(--g300);font-size:0.88rem;margin-top:6px;font-weight:300}
+.price-daily strong{color:var(--gold);font-weight:600}
+.price-setup{display:inline-block;margin-top:14px;padding:6px 18px;background:rgba(255,255,255,0.03);border-radius:100px;font-size:0.75rem;color:var(--g500);border:1px solid rgba(255,255,255,0.04)}
+.price-features{list-style:none;margin-top:32px;text-align:left;display:flex;flex-direction:column;gap:13px}
+.price-features li{display:flex;align-items:flex-start;gap:12px;font-size:0.85rem;color:var(--g100);line-height:1.4;font-weight:300}
+.price-features li::before{content:'⚡';font-size:0.7rem;flex-shrink:0;margin-top:2px}
+.price-card .btn-primary{width:100%;justify-content:center;margin-top:32px;font-size:0.95rem;padding:18px 36px}
+.price-guarantee{margin-top:14px;font-size:0.75rem;color:var(--g500)}
+.faq{padding:100px 24px;max-width:660px;margin:0 auto}.faq-header{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.04);padding:22px 0}
+.faq-q{font-weight:600;font-size:0.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.3s ease}
+.faq-q:hover{color:var(--gold)}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--gold);font-weight:300;transition:transform 0.3s ease;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;font-size:0.85rem;color:var(--g300);line-height:1.65;font-weight:300}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px}
+.final-cta{padding:120px 24px;text-align:center;position:relative}
+.final-cta::before{content:'';position:absolute;bottom:20%;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(245,166,35,0.08) 0%,transparent 70%);pointer-events:none}
+.final-cta h2{margin-bottom:14px}.final-cta p{color:var(--g300);margin-bottom:36px;font-size:1rem;font-weight:300}
+footer{padding:40px 24px;border-top:1px solid rgba(245,166,35,0.04);text-align:center;font-size:0.75rem;color:var(--g700)}
+footer .logo{display:inline-flex;margin-bottom:8px;font-size:1rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatUp{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 8px rgba(245,166,35,0.6)}50%{opacity:0.3;box-shadow:0 0 4px rgba(245,166,35,0.2)}}
+@keyframes msgAppear{from{opacity:0;transform:translateY(6px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes typingDot{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+@media(max-width:640px){nav{padding:14px 20px}.logo{font-size:1.15rem}.nav-cta{padding:8px 18px;font-size:0.75rem}.phone-frame{width:300px}.hero{padding:100px 20px 60px}.hero-ctas{flex-direction:column;align-items:center}.btn-primary,.btn-ghost{width:100%;justify-content:center}.hero-stat{flex-direction:column;gap:16px}.hero-stat-divider{width:40px;height:1px}.price-card{padding:36px 28px}.steps{grid-template-columns:1fr}.comp-table th,.comp-table td{padding:12px 14px;font-size:0.78rem}.test-card{padding:32px 24px}}
+</style>
 </head>
 <body>
+<nav>
+  <div class="logo"><span class="logo-bolt">⚡</span><span class="zap">Zap</span><span class="intel">inteligência</span></div>
+  <a href="#teste" class="nav-cta">Teste Grátis →</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <div class="badge">⚡ Instalamos em 15 minutos</div>
-      <h1>Nunca mais perca<br>um pedido no<br><span class="highlight">WhatsApp</span></h1>
-      <p class="subtitle">Receba pedidos automaticamente, 24h por dia. Seu cliente manda mensagem, o sistema responde na hora com cardápio, preços e confirmação.</p>
-      <a href="https://wa.me/5517991223048?text=Quero%20testar%20no%20meu%20restaurante" class="cta-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.704-1.392A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.233 0-4.305-.726-5.983-1.955l-.422-.31-2.79.825.748-2.736-.34-.44A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Testar no meu restaurante
-      </a>
-      <span class="cta-sub">7 dias grátis. Sem cartão. Sem compromisso.</span>
+<section class="hero">
+  <div class="badge">Seu novo atendente começa em 48 horas</div>
+  <h1>Seu restaurante com <em>inteligência</em> no atendimento</h1>
+  <p class="hero-sub">Seu WhatsApp responde sozinho — cardápio, horários, preços, delivery — como seu melhor funcionário. Você cuida da cozinha.</p>
+  <div class="hero-ctas">
+    <a href="#teste" class="btn-primary">⚡ Testar 7 dias grátis</a>
+    <a href="#como" class="btn-ghost">Como funciona ↓</a>
+  </div>
+  <div class="hero-stat">
+    <div class="hero-stat-item"><div class="num">&lt;R$10</div><div class="label">Por dia</div></div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-item"><div class="num">∞</div><div class="label">Mensagens</div></div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat-item"><div class="num">48h</div><div class="label">Para ativar</div></div>
+  </div>
+</section>
+
+<section class="mockup-section">
+  <div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--g500)">Como seu cliente vê</div>
+  <div class="phone-frame"><div class="phone-screen">
+    <div class="chat-header">
+      <div class="chat-avatar">🍔</div>
+      <div><div class="chat-name">Burger House</div><div class="chat-status">⚡ atendendo</div></div>
     </div>
-  </section>
-
-  <!-- CHAT DEMO -->
-  <section class="chat-section">
-    <div class="container">
-      <div class="section-label">Veja funcionando</div>
-      <h2>É assim que seus clientes vão ser atendidos</h2>
-      <div class="chat-window">
-        <div class="chat-header">
-          <div class="chat-avatar">🍔</div>
-          <div>
-            <div class="chat-name">Burger da Vila</div>
-            <div class="chat-status">● online</div>
-          </div>
-        </div>
-        <div class="chat-messages">
-          <div class="msg msg-in">
-            Quero um X-Burger e uma coca 🍔
-            <div class="msg-time">21:32</div>
-          </div>
-          <div class="msg msg-out">
-            Perfeito! Seu pedido:<br><br>🍔 X-Burger — R$22<br>🥤 Coca-Cola — R$7<br><br>Total: R$29<br><br>Confirma o pedido? 😊
-            <div class="msg-time">21:32</div>
-          </div>
-          <div class="msg msg-in">
-            Confirmo! Entrega na Rua das Flores, 123
-            <div class="msg-time">21:33</div>
-          </div>
-          <div class="msg msg-out">
-            Anotado! 📝 Previsão de entrega: 30-40 min. Obrigado pela preferência! 🚚
-            <div class="msg-time">21:33</div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center; margin-top: 24px;">
-        <span style="font-size: 14px; color: var(--muted);">Resposta automática em menos de 2 segundos — 24h por dia</span>
-      </div>
+    <div class="chat-body">
+      <div class="msg msg-in">Oi! Qual o cardápio de vocês?<div class="msg-time">19:47</div></div>
+      <div class="typing"><span></span><span></span><span></span></div>
+      <div class="msg msg-out">Oi! Aqui tá o cardápio completo: <span style="color:var(--gold);text-decoration:underline">burgerhouse.com/cardapio</span> 🍔<div class="msg-time">19:47</div></div>
+      <div class="msg msg-in">Vocês entregam no Jardim América?<div class="msg-time">19:48</div></div>
+      <div class="msg msg-out">Entregamos sim! Taxa de R$5 pro Jardim América. Estamos abertos até meia-noite hoje 😉<div class="msg-time">19:48</div></div>
+      <div class="msg msg-in">Tem opção vegetariana?<div class="msg-time">19:49</div></div>
+      <div class="msg msg-out">Temos! O Veggie Burger com grão-de-bico (R$26) é bem pedido. Tem também a Salada Caprese por R$18 🌱<div class="msg-time">19:49</div></div>
     </div>
-  </section>
+  </div></div>
+</section>
 
-  <!-- MID CTA -->
-  <section class="mid-cta">
-    <div class="container">
-      <a href="https://wa.me/5517991223048?text=Quero%20ver%20funcionando%20no%20meu%20WhatsApp" class="cta-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.704-1.392A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.233 0-4.305-.726-5.983-1.955l-.422-.31-2.79.825.748-2.736-.34-.44A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Ver funcionando no meu WhatsApp
-      </a>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="problem">
+  <div class="section-label">O problema</div>
+  <h2>Cada mensagem sem resposta é dinheiro que vai pro concorrente</h2>
+  <div class="problem-grid">
+    <div class="problem-card"><div class="icon">📱</div><h3>Cozinha lotada, celular abandonado</h3><p>Sexta à noite, restaurante cheio. 23 mensagens no WhatsApp sem resposta. Cada uma era uma venda.</p></div>
+    <div class="problem-card"><div class="icon">⏳</div><h3>Cliente não espera</h3><p>Se não responde em minutos, ele já mandou mensagem pro outro restaurante da rua.</p></div>
+    <div class="problem-card"><div class="icon">🔄</div><h3>As mesmas perguntas, 100 vezes</h3><p>"Qual o horário?" "Tem delivery?" "Quanto é o X-Tudo?" As mesmas 10 perguntas toda semana.</p></div>
+  </div>
+</section>
 
-  <!-- PARA QUEM -->
-  <section class="para-quem">
-    <div class="container">
-      <h2>Perfeito para</h2>
-      <div class="tipos">
-        <div class="tipo"><span class="emoji">🍕</span> Pizzarias</div>
-        <div class="tipo"><span class="emoji">🍔</span> Hamburguerias</div>
-        <div class="tipo"><span class="emoji">🍱</span> Marmitarias</div>
-        <div class="tipo"><span class="emoji">🛵</span> Delivery</div>
-        <div class="tipo"><span class="emoji">🍰</span> Confeitarias</div>
-        <div class="tipo"><span class="emoji">☕</span> Cafeterias</div>
-        <div class="tipo"><span class="emoji">🍣</span> Restaurantes</div>
-        <div class="tipo"><span class="emoji">🧃</span> Açaiterias</div>
-      </div>
-      <p style="color: var(--muted); font-size: 15px;">Se seus clientes pedem pelo WhatsApp, funciona pra você.</p>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="how" id="como">
+  <div class="how-header"><div class="section-label">Como funciona</div><h2>Sem complicação. A gente cuida de tudo.</h2><p>Você não precisa entender de tecnologia.</p></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Mande suas informações</h3><p>Cardápio, horários, preços, área de entrega. A gente configura o atendente com a cara do seu restaurante.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Ativamos seu atendente</h3><p>Em 48 horas seu WhatsApp tem um atendente digital que conhece cada prato, cada preço, cada detalhe.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Acompanhe os resultados</h3><p>Relatório semanal no seu WhatsApp: quantos atendimentos, o que mais perguntam, horários de pico.</p></div>
+  </div>
+</section>
 
-  <!-- PROBLEMS WE SOLVE -->
-  <section class="features">
-    <div class="container">
-      <h2>O que muda no seu dia a dia</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h3>Para de perder pedido</h3>
-          <p>Cliente mandou mensagem às 23h? Respondido. Domingo? Respondido. Sempre.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🧑‍🍳</div>
-          <h3>Sua equipe foca na cozinha</h3>
-          <p>Ninguém precisa parar pra responder "qual o preço do combo" pela centésima vez.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Resposta em 2 segundos</h3>
-          <p>Cliente não espera. Quanto mais rápido, mais venda fecha.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">❌</div>
-          <h3>Menos erro no pedido</h3>
-          <p>O sistema confirma item por item antes de enviar. Sem confusão.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌙</div>
-          <h3>Funciona quando você dorme</h3>
-          <p>Madrugada, feriado, hora do almoço — nunca para.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚨</div>
-          <h3>Passa pro dono quando precisa</h3>
-          <p>Reclamação, alergia, pedido especial? Avisa você na hora.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="features">
+  <div class="features-header"><div class="section-label">O que está incluso</div><h2>Tudo que um bom atendente faz</h2><p>Só que sem faltar, sem atrasar, e sem esquecer.</p></div>
+  <div class="features-grid">
+    <div class="feature"><div class="feature-icon">💬</div><h3>Conversa natural</h3><p>Responde em português do dia a dia, com a personalidade do seu restaurante.</p></div>
+    <div class="feature"><div class="feature-icon">🕐</div><h3>Nos seus horários</h3><p>Atende no horário do restaurante. Quando fecha, avisa o horário de funcionamento.</p></div>
+    <div class="feature"><div class="feature-icon">🧠</div><h3>Conhece seu cardápio inteiro</h3><p>Preços, ingredientes, combos, promoção do dia. Responde como quem trabalha ali há anos.</p></div>
+    <div class="feature"><div class="feature-icon">🚨</div><h3>Escala pro dono</h3><p>Reclamação, alergia, "quero falar com o dono" — transfere na hora.</p></div>
+    <div class="feature"><div class="feature-icon">📊</div><h3>Relatório semanal</h3><p>O que mais perguntam, em que horário, oportunidades que você tá perdendo.</p></div>
+    <div class="feature"><div class="feature-icon">✏️</div><h3>Atualização rápida</h3><p>Mudou o preço? Novo prato? Manda no WhatsApp e a gente atualiza.</p></div>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="mid-cta">
-    <div class="container">
-      <a href="https://wa.me/5517991223048?text=Quero%20testar%20no%20meu%20restaurante" class="cta-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.704-1.392A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.233 0-4.305-.726-5.983-1.955l-.422-.31-2.79.825.748-2.736-.34-.44A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Testar no meu restaurante
-      </a>
-      <span class="cta-sub">Instalamos pra você em 15 minutos. Sem complicação.</span>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="comparison">
+  <div class="comparison-header"><div class="section-label">Comparativo</div><h2>Funcionário vs. Zapinteligência</h2></div>
+  <table class="comp-table">
+    <thead><tr><th></th><th>Funcionário</th><th>⚡ Zapinteligência</th></tr></thead>
+    <tbody>
+      <tr><td>Custo mensal</td><td>R$1.800+</td><td>R$297</td></tr>
+      <tr class="comp-highlight"><td>Falta no trabalho</td><td>Sim</td><td>Nunca</td></tr>
+      <tr><td>Conhece o cardápio</td><td>Às vezes</td><td>Sempre</td></tr>
+      <tr class="comp-highlight"><td>Responde rápido</td><td>Depende</td><td>Sempre</td></tr>
+      <tr><td>Atende vários ao mesmo tempo</td><td>Difícil</td><td>Sem limite</td></tr>
+      <tr class="comp-highlight"><td>Relatório de atendimento</td><td>Não faz</td><td>Toda semana</td></tr>
+    </tbody>
+  </table>
+</section>
 
-  <!-- PROOF -->
-  <section class="proof">
-    <div class="container">
-      <h2>Já funciona de verdade</h2>
-      <div class="proof-card">
-        <div class="proof-quote">"Eu perdia uns 10 pedidos por noite porque não conseguia responder todo mundo. Agora o WhatsApp responde sozinho e eu só acompanho os pedidos chegando."</div>
-        <div class="proof-author">
-          <div class="proof-avatar">👨‍🍳</div>
-          <div>
-            <div class="proof-name">Dono de hamburgueria</div>
-            <div class="proof-role">Catanduva, SP</div>
-          </div>
-        </div>
-      </div>
-      <div class="proof-stats">
-        <div>
-          <div class="stat-num">+40%</div>
-          <div class="stat-label">mais pedidos à noite</div>
-        </div>
-        <div>
-          <div class="stat-num">2s</div>
-          <div class="stat-label">tempo de resposta</div>
-        </div>
-        <div>
-          <div class="stat-num">24h</div>
-          <div class="stat-label">funcionando por dia</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="testimonial" style="padding:80px 24px">
+  <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap">
+    <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:2rem;color:var(--gold)">⚡</div><div style="font-size:0.72rem;color:var(--g500);text-transform:uppercase;letter-spacing:0.1em;font-weight:500;margin-top:4px">Ativo em Catanduva, SP</div></div>
+    <div style="width:1px;height:48px;background:rgba(245,166,35,0.1)"></div>
+    <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:2rem;color:var(--gold)">0</div><div style="font-size:0.72rem;color:var(--g500);text-transform:uppercase;letter-spacing:0.1em;font-weight:500;margin-top:4px">Mensagens perdidas</div></div>
+    <div style="width:1px;height:48px;background:rgba(245,166,35,0.1)"></div>
+    <div style="text-align:center"><div style="font-family:Playfair Display,serif;font-size:2rem;color:var(--gold)">100%</div><div style="font-size:0.72rem;color:var(--g500);text-transform:uppercase;letter-spacing:0.1em;font-weight:500;margin-top:4px">Taxa de resposta</div></div>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how">
-    <div class="container">
-      <h2>Como funciona</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3>Manda seu cardápio</h3>
-            <p>Foto, PDF, link do iFood — qualquer formato. A gente resolve.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3>Instalamos em 15 minutos</h3>
-            <p>A gente configura tudo. Preços, horários, respostas — prontinho.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3>Seus clientes já são atendidos</h3>
-            <p>O WhatsApp começa a responder sozinho. Você acompanha e aprova.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="pricing" id="teste">
+  <div class="section-label">Investimento</div>
+  <h2>Seu melhor funcionário por R$10/dia</h2>
+  <p class="pricing-sub">Sem surpresas. Um preço. Tudo incluso.</p>
+  <div class="price-card">
+    <div class="price-eyebrow">Plano Único</div>
+    <div class="price-amount"><span>R$</span>297<span>/mês</span></div>
+    <div class="price-daily">Isso dá <strong>menos de R$10 por dia</strong></div>
+    <div class="price-setup">Instalação única: R$497</div>
+    <ul class="price-features">
+      <li>Atendente digital no WhatsApp do restaurante</li>
+      <li>Configuração completa com seu cardápio</li>
+      <li>Transferência automática pro dono</li>
+      <li>Relatório semanal de atendimentos</li>
+      <li>Suporte direto com a equipe</li>
+      <li>Sem limite de mensagens</li>
+      <li>Atualizações de cardápio incluídas</li>
+      <li>Cancele quando quiser</li>
+    </ul>
+    <a href="https://wa.me/5517991195068?text=Oi!%20Quero%20testar%20o%20Zapintelig%C3%AAncia%20no%20meu%20restaurante" class="btn-primary" target="_blank">⚡ Começar teste grátis de 7 dias</a>
+    <p class="price-guarantee">Sem cartão de crédito · Cancele quando quiser</p>
+  </div>
+</section>
 
-  <!-- PRICING -->
-  <section class="pricing">
-    <div class="container">
-      <h2>Investimento</h2>
-      <p class="subtitle">Menos que um atendente. Funciona 24h sem folga.</p>
-      <div class="price-cards">
-        <div class="price-card">
-          <h3>Configuração</h3>
-          <div class="price">R$497<span> único</span></div>
-          <p class="price-desc">Pagamento único de setup</p>
-          <ul class="price-features">
-            <li>Cadastro completo do cardápio</li>
-            <li>Configuração personalizada</li>
-            <li>Instalação em 15 minutos</li>
-            <li>7 dias grátis pra testar</li>
-          </ul>
-        </div>
-        <div class="price-card popular">
-          <div class="popular-badge">MAIS POPULAR</div>
-          <h3>Mensal</h3>
-          <div class="price">R$297<span>/mês</span></div>
-          <p class="price-desc">Cancela quando quiser</p>
-          <ul class="price-features">
-            <li>Atendimento 24h automático</li>
-            <li>Respostas em 2 segundos</li>
-            <li>Escalação pro dono</li>
-            <li>Atualizações do cardápio</li>
-            <li>Suporte por WhatsApp</li>
-            <li>Relatórios semanais</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="faq">
+  <div class="faq-header"><div class="section-label">Dúvidas</div><h2>Tudo que você quer saber</h2></div>
+  <div class="faq-item"><div class="faq-q">Meu cliente vai perceber que não sou eu?</div><div class="faq-a">Na maioria dos casos, não. O atendente conversa de forma natural, com o jeito do seu restaurante. Nada de menus numerados.</div></div>
+  <div class="faq-item"><div class="faq-q">E se o cliente quiser falar comigo?</div><div class="faq-a">É só pedir. O atendente detecta e transfere a conversa pra você na hora. Também transfere em caso de reclamação ou alergia.</div></div>
+  <div class="faq-item"><div class="faq-q">Preciso trocar meu número?</div><div class="faq-a">Não. Configuramos tudo no número que você já usa.</div></div>
+  <div class="faq-item"><div class="faq-q">Como atualizo o cardápio?</div><div class="faq-a">Manda as alterações por WhatsApp pra gente. Atualizamos rapidamente.</div></div>
+  <div class="faq-item"><div class="faq-q">Funciona fora do horário?</div><div class="faq-a">O atendente funciona nos horários que você definir. Fora do expediente, avisa o cliente quando você abre.</div></div>
+  <div class="faq-item"><div class="faq-q">Tem limite de mensagens?</div><div class="faq-a">Não. 10 ou 1.000 mensagens por dia, o preço é o mesmo.</div></div>
+  <div class="faq-item"><div class="faq-q">Posso cancelar?</div><div class="faq-a">Sim, a qualquer momento. Sem multa e sem burocracia.</div></div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section class="footer-cta">
-    <div class="container">
-      <h2>Seus clientes estão mandando mensagem agora.<br>Quem tá respondendo?</h2>
-      <p>7 dias grátis. Se não gostar, cancela sem pagar nada.</p>
-      <a href="https://wa.me/5517991223048?text=Quero%20testar%20no%20meu%20restaurante" class="cta-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.704-1.392A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.233 0-4.305-.726-5.983-1.955l-.422-.31-2.79.825.748-2.736-.34-.44A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Testar no meu restaurante — é grátis
-      </a>
-    </div>
-  </section>
+<hr class="section-divider">
+<section class="final-cta">
+  <h2>Seu concorrente ainda responde no braço.</h2>
+  <p>Seja o primeiro da sua cidade com atendimento inteligente.</p>
+  <a href="https://wa.me/5517991195068?text=Oi!%20Quero%20testar%20o%20Zapintelig%C3%AAncia%20no%20meu%20restaurante" class="btn-primary" target="_blank">⚡ Quero testar 7 dias grátis</a>
+</section>
 
-  <footer>
-    <div class="container">
-      Zap Inteligente © 2026 — Catanduva, SP
-    </div>
-  </footer>
+<footer>
+  <div class="logo"><span class="logo-bolt">⚡</span><span class="zap">Zap</span><span class="intel">inteligência</span></div>
+  <p>© 2026 Zapinteligência · Catanduva, SP</p>
+  <p style="margin-top:4px;font-size:0.68rem;color:var(--g800)">Atendimento inteligente para restaurantes</p>
+</footer>
 
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const i=q.parentElement;const w=i.classList.contains('open');document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));if(!w)i.classList.add('open')})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+</script>
 </body>
 </html>
