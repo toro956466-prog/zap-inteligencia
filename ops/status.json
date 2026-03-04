@@ -98,31 +98,37 @@
   ],
   "costs": {
     "today": {
-      "opus": {
-        "tokens": 850000,
-        "cost": 12.75
-      },
-      "sonnet": {
-        "tokens": 45000,
-        "cost": 0.27
-      },
-      "glm": {
-        "tokens": 0,
-        "cost": 0.0
+      "total": 13.02,
+      "breakdown": {
+        "Opus": {
+          "tokens": 850000,
+          "cost": 12.75
+        },
+        "Sonnet": {
+          "tokens": 45000,
+          "cost": 0.27
+        },
+        "GLM": {
+          "tokens": 0,
+          "cost": 0.0
+        }
       }
     },
     "thisWeek": {
-      "opus": {
-        "tokens": 9200000,
-        "cost": 138.0
-      },
-      "sonnet": {
-        "tokens": 320000,
-        "cost": 1.92
-      },
-      "glm": {
-        "tokens": 0,
-        "cost": 0.0
+      "total": 139.92,
+      "breakdown": {
+        "Opus": {
+          "tokens": 9200000,
+          "cost": 138.0
+        },
+        "Sonnet": {
+          "tokens": 320000,
+          "cost": 1.92
+        },
+        "GLM": {
+          "tokens": 0,
+          "cost": 0.0
+        }
       }
     },
     "thisMonth": {
