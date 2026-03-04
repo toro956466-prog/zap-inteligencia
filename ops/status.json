@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-03T20:59:02-03:00",
+  "updatedAt": "2026-03-03T21:00:32-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -44,108 +44,31 @@
     "ip": "100.79.77.119"
   },
   "pipeline": {
-    "total": 792,
-    "novo": 82,
-    "contacted": 150,
-    "responded": 7,
-    "interested": 5,
-    "onboarding": 3,
-    "live": 5,
+    "total": 0,
+    "novo": 0,
+    "contacted": 0,
+    "responded": 0,
+    "interested": 0,
+    "onboarding": 0,
+    "live": 0,
     "activated": 0,
-    "declined": 6,
-    "noStatus": 428,
-    "todaySent": 21,
-    "todayResponses": 1
+    "declined": 0,
+    "todaySent": 0,
+    "todayResponses": 0
   },
-  "conversations": [
-    {
-      "restaurant": "Área de Lazer Dantas",
-      "city": "Ribeirão Preto",
-      "status": "replied",
-      "time": "2026-03-03T20:59:02-03:00",
-      "note": "Replied 'Pode sim, se for gratuito' - HOT LEAD"
-    },
-    {
-      "restaurant": "Chácara Tô Tranquilo",
-      "city": "Pres. Prudente",
-      "status": "read",
-      "time": "2026-03-03T10:21:00-03:00"
-    },
-    {
-      "restaurant": "Chácara São José",
-      "city": "Pres. Prudente",
-      "status": "sent",
-      "time": "2026-03-03T12:57:00-03:00"
-    },
-    {
-      "restaurant": "Chácara Princesa",
-      "city": "Marília",
-      "status": "sent",
-      "time": "2026-03-03T14:35:00-03:00"
-    },
-    {
-      "restaurant": "Rancho Águia Dourada",
-      "city": "Pres. Prudente",
-      "status": "sent",
-      "time": "2026-03-03T14:30:00-03:00"
-    },
-    {
-      "restaurant": "Chácara Paraíso Bauru",
-      "city": "Bauru",
-      "status": "sent",
-      "time": "2026-03-03T14:33:00-03:00"
-    }
-  ],
+  "conversations": [],
   "restaurants": {
-    "totalLeads": 792,
-    "onboarded": 3,
-    "active": 5,
-    "profiles": [
-      {
-        "name": "Área de Lazer Dantas",
-        "city": "Ribeirão Preto",
-        "status": "interested",
-        "soul": "200 pessoas, salão grande, Rua Japurá 3345"
-      },
-      {
-        "name": "Chácara Princesa",
-        "city": "Marília",
-        "status": "contacted",
-        "soul": "300 pessoas climatizado, 9 quartos, gerador, 3.3K IG"
-      },
-      {
-        "name": "Chácara Paraíso Bauru",
-        "city": "Bauru",
-        "status": "contacted",
-        "soul": "5000m², 500 pessoas, 4 quartos, 7 banheiros"
-      },
-      {
-        "name": "Chácara São José",
-        "city": "Pres. Prudente",
-        "status": "contacted",
-        "soul": "4,374 IG followers, strong social presence"
-      },
-      {
-        "name": "Chácara Tô Tranquilo",
-        "city": "Pres. Prudente",
-        "status": "contacted",
-        "soul": "Professional website, 4 suítes, salão 100 pessoas"
-      }
-    ]
+    "totalLeads": 0,
+    "onboarded": 0,
+    "active": 0,
+    "profiles": []
   },
   "errors": [
-    {
-      "type": "cron",
-      "service": "Health Check",
-      "message": "Job execution timed out (90s)",
-      "time": "2026-03-03T17:21:00-03:00",
-      "severity": "warning"
-    },
     {
       "type": "health",
       "service": "WhatsApp TCL",
       "message": "WhatsApp Business not running on TCL",
-      "time": "2026-03-03T20:59:02-03:00",
+      "time": "2026-03-03T21:00:32-03:00",
       "severity": "warning"
     },
     {
