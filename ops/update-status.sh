@@ -72,8 +72,8 @@ else
   IFS='|' read -r MOTOG_BATTERY MOTOG_TEMP MOTOG_RAM_TOTAL MOTOG_RAM_AVAIL MOTOG_STORAGE MOTOG_WA <<< "$MOTOG_DATA"
 fi
 
-# Poll TCL (regular WhatsApp = com.whatsapp)
-TCL_DATA=$(poll_phone "$TCL_ADB" "com.whatsapp")
+# Poll TCL (WhatsApp Business = com.whatsapp.w4b)
+TCL_DATA=$(poll_phone "$TCL_ADB" "com.whatsapp.w4b")
 if [ "$TCL_DATA" = "offline" ]; then
   TCL_ONLINE=false
   TCL_BATTERY=0; TCL_TEMP=0; TCL_RAM_TOTAL=0; TCL_RAM_AVAIL=0
@@ -152,6 +152,31 @@ if [ -n "$COMFYUI_QUEUE" ]; then
   QUEUE_PENDING=$(echo "$COMFYUI_QUEUE" | jq '.queue_pending | length')
 fi
 
+# ─── Poll Services (Proxy + DroidClaw) ───
+
+PROXY_DATA=$(curl -s --connect-timeout $TIMEOUT http://localhost:8899/health 2>/dev/null)
+if [ -n "$PROXY_DATA" ] && echo "$PROXY_DATA" | jq -e '.status' >/dev/null 2>&1; then
+  PROXY_RUNNING=true
+  PROXY_UPTIME=$(echo "$PROXY_DATA" | jq -r '.uptime // 0')
+  PROXY_MESSAGES=$(echo "$PROXY_DATA" | jq -r '.messages // 0')
+  PROXY_ERRORS=$(echo "$PROXY_DATA" | jq -r '.errors // 0')
+  PROXY_CONTACTS=$(echo "$PROXY_DATA" | jq -r '.uniqueContacts // 0')
+else
+  PROXY_RUNNING=false
+  PROXY_UPTIME=0; PROXY_MESSAGES=0; PROXY_ERRORS=0; PROXY_CONTACTS=0
+fi
+
+MOTOG_DC_PID=$(adb -s "$MOTOG_ADB" shell "pidof com.openclaw.droidclaw" 2>/dev/null | tr -dc '0-9')
+MOTOG_DROIDCLAW="false"
+[ -n "$MOTOG_DC_PID" ] && MOTOG_DROIDCLAW="true"
+
+TCL_DC_PID=$(adb -s "$TCL_ADB" shell "pidof com.openclaw.droidclaw" 2>/dev/null | tr -dc '0-9')
+TCL_DROIDCLAW="false"
+[ -n "$TCL_DC_PID" ] && TCL_DROIDCLAW="true"
+
+echo "  Proxy: running=$PROXY_RUNNING msgs=$PROXY_MESSAGES contacts=$PROXY_CONTACTS"
+echo "  DroidClaw: MotoG=$MOTOG_DROIDCLAW TCL=$TCL_DROIDCLAW"
+
 # ─── Update status.json ───
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S%z" | sed 's/\(..\)$/:\1/')
 
@@ -183,6 +208,13 @@ jq \
   --argjson tclRamAvail "${TCL_RAM_AVAIL:-0}" \
   --arg tclStorage "$TCL_STORAGE" \
   --argjson tclWa "${TCL_WA:-false}" \
+  --argjson motogDc "$MOTOG_DROIDCLAW" \
+  --argjson tclDc "$TCL_DROIDCLAW" \
+  --argjson proxyRunning "$PROXY_RUNNING" \
+  --argjson proxyUptime "$PROXY_UPTIME" \
+  --argjson proxyMessages "$PROXY_MESSAGES" \
+  --argjson proxyErrors "$PROXY_ERRORS" \
+  --argjson proxyContacts "$PROXY_CONTACTS" \
   '
   .lastUpdated = $ts |
   .pc.online = $pcOnline |
@@ -218,7 +250,16 @@ jq \
   .phones.tcl.ramTotal = $tclRamTotal |
   .phones.tcl.ramAvailable = $tclRamAvail |
   .phones.tcl.storage = $tclStorage |
-  .phones.tcl.whatsappRunning = $tclWa
+  .phones.tcl.whatsappRunning = $tclWa |
+  .phones.motoG.droidclaw = $motogDc |
+  .phones.tcl.droidclaw = $tclDc |
+  .proxy = {
+    running: $proxyRunning,
+    uptime: $proxyUptime,
+    messages: $proxyMessages,
+    errors: $proxyErrors,
+    uniqueContacts: $proxyContacts
+  }
   ' "$STATUS_FILE" > "${STATUS_FILE}.tmp" && mv "${STATUS_FILE}.tmp" "$STATUS_FILE"
 
 # ─── Auto-unload idle Ollama models to free VRAM ───

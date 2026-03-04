@@ -206,6 +206,9 @@ function render(d) {
         <span>${p.whatsappRunning
           ? '<span style="color:var(--green)">WhatsApp ✓</span>'
           : '<span style="color:var(--red)">WhatsApp ✗</span>'}</span>
+        <span>${p.droidclaw != null ? (p.droidclaw
+          ? '<span style="color:var(--green)">DroidClaw ✓</span>'
+          : '<span style="color:var(--red)">DroidClaw ✗</span>') : ''}</span>
       </div>
       <div class="device-detail">
         <span>RAM: ${p.ramAvailable != null ? Math.round(p.ramAvailable) + ' / ' + Math.round(p.ramTotal) + ' MB' : '—'}</span>
@@ -280,6 +283,9 @@ function render(d) {
       </div>
       ${phones}
     </div>
+
+    <!-- Proxy -->
+    ${d.proxy ? '<div class="card col-6"><div class="card-header"><span class="card-title"><span class="icon">🔌</span> WhatsApp Proxy</span><span class="status-badge ' + (d.proxy.running ? 'status-online' : 'status-offline') + '"><span class="dot ' + (d.proxy.running ? 'dot-green' : 'dot-red') + '"></span>' + (d.proxy.running ? 'Running' : 'Down') + '</span></div><div class="stat-row"><div class="stat-box"><div class="stat-value gold">' + (d.proxy.messages || 0) + '</div><div class="stat-label">Messages</div></div><div class="stat-box"><div class="stat-value blue">' + (d.proxy.uniqueContacts || 0) + '</div><div class="stat-label">Contacts</div></div><div class="stat-box"><div class="stat-value ' + (d.proxy.errors > 0 ? '" style="color:var(--red)"' : 'green"') + '>' + (d.proxy.errors || 0) + '</div><div class="stat-label">Errors</div></div><div class="stat-box"><div class="stat-value">' + (d.proxy.uptime ? Math.floor(d.proxy.uptime/3600) + 'h' : '—') + '</div><div class="stat-label">Uptime</div></div></div></div>' : ''}
 
     <!-- PC / Server -->
     <div class="card col-6">
