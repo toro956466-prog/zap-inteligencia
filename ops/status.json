@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T20:44:56+00:00",
+  "lastUpdated": "2026-03-04T20:45:58+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 47,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1121,
+      "ramAvailable": 1130,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641"
