@@ -267,3 +267,15 @@ echo "✅ Status updated at $TIMESTAMP"
 echo "   Ollama: $OLLAMA_RUNNING (models: $LOADED_MODELS, VRAM: ${OLLAMA_VRAM_GB}GB)"
 echo "   ComfyUI: $COMFYUI_RUNNING (Torch: ${TORCH_VRAM_GB}GB)"
 echo "   VRAM: Ollama ${OLLAMA_VRAM_GB}GB + ComfyUI ${TORCH_VRAM_GB}GB + System ${CUDA_OVERHEAD}GB + Free ${FREE_GB}GB = ${VRAM_TOTAL_GB}GB"
+
+# ─── Auto-deploy to GitHub ───
+cd "$(dirname "$0")/.." 2>/dev/null
+if git diff --quiet ops/status.json 2>/dev/null; then
+  echo "   No changes to deploy"
+else
+  git add ops/status.json && \
+  git commit -q -m "ops: auto-update $(date +%H:%M)" && \
+  git push -q origin main 2>/dev/null && \
+  echo "   📤 Deployed to GitHub" || \
+  echo "   ⚠️  Deploy failed"
+fi
