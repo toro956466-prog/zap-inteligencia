@@ -1,6 +1,6 @@
 #!/bin/bash
-# Zap Inteligência — VRAM Status Updater
-# Polls Ollama + ComfyUI and updates status.json with live VRAM breakdown
+# Zap Inteligência — Full Status Updater
+# Polls Ollama + ComfyUI + Phones and updates status.json
 # Run via cron every 60s or on-demand
 
 STATUS_FILE="$(dirname "$0")/status.json"
@@ -8,6 +8,10 @@ PC_IP="100.79.77.119"
 OLLAMA_URL="http://${PC_IP}:11434"
 COMFYUI_URL="http://${PC_IP}:8188"
 TIMEOUT=5
+
+# Phone ADB addresses
+MOTOG_ADB="100.111.83.8:38641"
+TCL_ADB="100.73.184.62:44411"
 
 # Check if jq is available
 if ! command -v jq &>/dev/null; then
@@ -20,6 +24,67 @@ if [ ! -f "$STATUS_FILE" ]; then
   echo "ERROR: $STATUS_FILE not found"
   exit 1
 fi
+
+# ─── Poll Phones ───
+
+poll_phone() {
+  local ADB_ADDR="$1"
+  local WA_PACKAGE="$2"  # com.whatsapp or com.whatsapp.w4b
+  
+  # Test connectivity first
+  local TEST=$(adb -s "$ADB_ADDR" shell "echo ok" 2>/dev/null)
+  if [ "$TEST" != "ok" ]; then
+    echo "offline"
+    return
+  fi
+  
+  # Get each value separately to avoid shell escaping issues
+  local BATTERY=$(adb -s "$ADB_ADDR" shell "dumpsys battery" 2>/dev/null | grep "level:" | head -1 | tr -dc '0-9')
+  local TEMP_RAW=$(adb -s "$ADB_ADDR" shell "dumpsys battery" 2>/dev/null | grep "temperature:" | head -1 | tr -dc '0-9')
+  local TEMP=$(echo "scale=1; ${TEMP_RAW:-0} / 10" | bc 2>/dev/null || echo "0")
+  
+  local RAM_TOTAL=$(adb -s "$ADB_ADDR" shell "cat /proc/meminfo" 2>/dev/null | grep "MemTotal" | awk '{print int($2/1024)}')
+  local RAM_AVAIL=$(adb -s "$ADB_ADDR" shell "cat /proc/meminfo" 2>/dev/null | grep "MemAvailable" | awk '{print int($2/1024)}')
+  
+  local DF_LINE=$(adb -s "$ADB_ADDR" shell "df /data" 2>/dev/null | tail -1)
+  local STORAGE_USED_KB=$(echo "$DF_LINE" | awk '{print $3}')
+  local STORAGE_TOTAL_KB=$(echo "$DF_LINE" | awk '{print $2}')
+  local STORAGE_USED=$(echo "scale=0; ${STORAGE_USED_KB:-0} / 1048576" | bc 2>/dev/null || echo "0")
+  local STORAGE_TOTAL=$(echo "scale=0; ${STORAGE_TOTAL_KB:-0} / 1048576" | bc 2>/dev/null || echo "0")
+  
+  local WA_PID=$(adb -s "$ADB_ADDR" shell "pidof $WA_PACKAGE" 2>/dev/null | tr -dc '0-9')
+  local WA_RUNNING="false"
+  if [ -n "$WA_PID" ]; then
+    WA_RUNNING="true"
+  fi
+  
+  echo "${BATTERY:-0}|${TEMP:-0}|${RAM_TOTAL:-0}|${RAM_AVAIL:-0}|${STORAGE_USED}G/${STORAGE_TOTAL}G|${WA_RUNNING}"
+}
+
+# Poll Moto G (WhatsApp Business = com.whatsapp.w4b)
+MOTOG_DATA=$(poll_phone "$MOTOG_ADB" "com.whatsapp.w4b")
+if [ "$MOTOG_DATA" = "offline" ]; then
+  MOTOG_ONLINE=false
+  MOTOG_BATTERY=0; MOTOG_TEMP=0; MOTOG_RAM_TOTAL=0; MOTOG_RAM_AVAIL=0
+  MOTOG_STORAGE="—"; MOTOG_WA=false
+else
+  MOTOG_ONLINE=true
+  IFS='|' read -r MOTOG_BATTERY MOTOG_TEMP MOTOG_RAM_TOTAL MOTOG_RAM_AVAIL MOTOG_STORAGE MOTOG_WA <<< "$MOTOG_DATA"
+fi
+
+# Poll TCL (regular WhatsApp = com.whatsapp)
+TCL_DATA=$(poll_phone "$TCL_ADB" "com.whatsapp")
+if [ "$TCL_DATA" = "offline" ]; then
+  TCL_ONLINE=false
+  TCL_BATTERY=0; TCL_TEMP=0; TCL_RAM_TOTAL=0; TCL_RAM_AVAIL=0
+  TCL_STORAGE="—"; TCL_WA=false
+else
+  TCL_ONLINE=true
+  IFS='|' read -r TCL_BATTERY TCL_TEMP TCL_RAM_TOTAL TCL_RAM_AVAIL TCL_STORAGE TCL_WA <<< "$TCL_DATA"
+fi
+
+echo "  Moto G: online=$MOTOG_ONLINE battery=$MOTOG_BATTERY% WA=$MOTOG_WA storage=$MOTOG_STORAGE"
+echo "  TCL:    online=$TCL_ONLINE battery=$TCL_BATTERY% WA=$TCL_WA storage=$TCL_STORAGE"
 
 # ─── Poll Ollama ───
 OLLAMA_PS=$(curl -s --connect-timeout $TIMEOUT "${OLLAMA_URL}/api/ps" 2>/dev/null)
@@ -104,6 +169,20 @@ jq \
   --arg freeVram "${FREE_GB}GB" \
   --argjson queueRunning "$QUEUE_RUNNING" \
   --argjson queuePending "$QUEUE_PENDING" \
+  --argjson motogOnline "$MOTOG_ONLINE" \
+  --argjson motogBattery "${MOTOG_BATTERY:-0}" \
+  --argjson motogTemp "${MOTOG_TEMP:-0}" \
+  --argjson motogRamTotal "${MOTOG_RAM_TOTAL:-0}" \
+  --argjson motogRamAvail "${MOTOG_RAM_AVAIL:-0}" \
+  --arg motogStorage "$MOTOG_STORAGE" \
+  --argjson motogWa "${MOTOG_WA:-false}" \
+  --argjson tclOnline "$TCL_ONLINE" \
+  --argjson tclBattery "${TCL_BATTERY:-0}" \
+  --argjson tclTemp "${TCL_TEMP:-0}" \
+  --argjson tclRamTotal "${TCL_RAM_TOTAL:-0}" \
+  --argjson tclRamAvail "${TCL_RAM_AVAIL:-0}" \
+  --arg tclStorage "$TCL_STORAGE" \
+  --argjson tclWa "${TCL_WA:-false}" \
   '
   .lastUpdated = $ts |
   .pc.online = $pcOnline |
@@ -125,8 +204,34 @@ jq \
     comfyui: $torchVram,
     cudaOverhead: $cudaOverhead,
     free: $freeVram
-  }
+  } |
+  .phones.motoG.online = $motogOnline |
+  .phones.motoG.battery = $motogBattery |
+  .phones.motoG.temperature = $motogTemp |
+  .phones.motoG.ramTotal = $motogRamTotal |
+  .phones.motoG.ramAvailable = $motogRamAvail |
+  .phones.motoG.storage = $motogStorage |
+  .phones.motoG.whatsappRunning = $motogWa |
+  .phones.tcl.online = $tclOnline |
+  .phones.tcl.battery = $tclBattery |
+  .phones.tcl.temperature = $tclTemp |
+  .phones.tcl.ramTotal = $tclRamTotal |
+  .phones.tcl.ramAvailable = $tclRamAvail |
+  .phones.tcl.storage = $tclStorage |
+  .phones.tcl.whatsappRunning = $tclWa
   ' "$STATUS_FILE" > "${STATUS_FILE}.tmp" && mv "${STATUS_FILE}.tmp" "$STATUS_FILE"
+
+# ─── Auto-unload idle Ollama models to free VRAM ───
+# If no ComfyUI jobs are pending/running AND Ollama has models loaded,
+# unload them after capturing stats (they'll reload on next request)
+if [ "$COMFYUI_RUNNING" = "true" ] && [ "$QUEUE_RUNNING" -eq 0 ] && [ "$QUEUE_PENDING" -eq 0 ]; then
+  if [ "$(echo "$LOADED_MODELS" | jq 'length')" -gt 0 ]; then
+    for MODEL in $(echo "$LOADED_MODELS" | jq -r '.[]'); do
+      curl -s "${OLLAMA_URL}/api/generate" -d "{\"model\":\"${MODEL}\",\"keep_alive\":0}" > /dev/null 2>&1
+      echo "  ♻️  Auto-unloaded: $MODEL"
+    done
+  fi
+fi
 
 echo "✅ Status updated at $TIMESTAMP"
 echo "   Ollama: $OLLAMA_RUNNING (models: $LOADED_MODELS, VRAM: ${OLLAMA_VRAM_GB}GB)"
