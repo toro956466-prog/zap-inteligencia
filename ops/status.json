@@ -1,26 +1,25 @@
 {
-  "updatedAt": "2026-03-03T21:03:20-03:00",
+  "updatedAt": "2026-03-03T21:05:04-03:00",
+  "lastUpdated": "2026-03-03T21:05:04-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
-      "status": "online",
+      "online": true,
       "battery": 71,
       "temperature": 24.0,
       "ramTotal": 3730,
       "ramAvailable": 1385,
-      "whatsapp": true,
-      "whatsappPid": 30075,
+      "whatsappRunning": true,
       "adbAddress": "100.111.83.8:38641"
     },
     "tcl": {
       "name": "TCL",
-      "status": "online",
+      "online": true,
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3752,
       "ramAvailable": 1759,
-      "whatsapp": false,
-      "whatsappPid": null,
+      "whatsappRunning": false,
       "adbAddress": "100.73.184.62:44411"
     }
   },
@@ -62,12 +61,17 @@
     "declined": 0
   },
   "conversations": {
+    "today": {
+      "sent": 0,
+      "received": 0,
+      "responseRate": "0%"
+    },
     "recent": [
       {
         "restaurant": "Mariscão Maceió",
         "city": "Maceió",
         "status": "live",
-        "time": "2026-03-03T21:03:20-03:00"
+        "time": "2026-03-03T21:05:04-03:00"
       }
     ]
   },
@@ -81,7 +85,7 @@
       "type": "health",
       "service": "WhatsApp TCL",
       "message": "WhatsApp Business not running on TCL",
-      "time": "2026-03-03T21:03:20-03:00",
+      "time": "2026-03-03T21:05:04-03:00",
       "severity": "warning"
     },
     {
@@ -89,7 +93,7 @@
       "service": "Health Check",
       "message": "Cron model override ignored — using Opus instead of GLM",
       "time": "2026-03-03T09:00:00-03:00",
-      "severity": "critical"
+      "severity": "warning"
     }
   ],
   "costs": {
@@ -120,6 +124,10 @@
         "tokens": 0,
         "cost": 0.0
       }
+    },
+    "thisMonth": {
+      "tokens": 9565000,
+      "cost": 152.94
     }
   }
 }
