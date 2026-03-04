@@ -175,6 +175,20 @@ function pct(used, total) {
   return Math.round((used / total) * 100);
 }
 
+function vramBar(vb) {
+  var total = parseFloat(vb.total) || 1;
+  var ollama = parseFloat(vb.ollamaModels) || 0;
+  var comfy = parseFloat(vb.comfyui) || 0;
+  var cuda = parseFloat(vb.cudaOverhead) || 0;
+  var free = parseFloat(vb.free) || 0;
+  var html = '';
+  if (ollama > 0) html += '<div style="width:' + (ollama/total*100) + '%;background:var(--blue);transition:width 0.5s" title="Ollama: ' + vb.ollamaModels + '"></div>';
+  if (comfy > 0) html += '<div style="width:' + (comfy/total*100) + '%;background:var(--gold);transition:width 0.5s" title="ComfyUI: ' + vb.comfyui + '"></div>';
+  if (cuda > 0) html += '<div style="width:' + (cuda/total*100) + '%;background:var(--text-dim);transition:width 0.5s" title="CUDA/System: ' + vb.cudaOverhead + '"></div>';
+  html += '<div style="width:' + (free/total*100) + '%;background:var(--surface-2);transition:width 0.5s" title="Free: ' + vb.free + '"></div>';
+  return html;
+}
+
 function render(d) {
   // Phones
   const phones = Object.values(d.phones).map(p => `
@@ -317,19 +331,7 @@ function render(d) {
               <div style="margin-top:10px;background:var(--surface);border-radius:var(--radius-sm);padding:12px">
                 <div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">VRAM Breakdown — ${d.pc.vramBreakdown.total}</div>
                 <div style="display:flex;height:20px;border-radius:4px;overflow:hidden;margin-bottom:8px">
-                  ${(() => {
-                    const total = parseFloat(d.pc.vramBreakdown.total);
-                    const ollama = parseFloat(d.pc.vramBreakdown.ollamaModels);
-                    const comfy = parseFloat(d.pc.vramBreakdown.comfyui);
-                    const cuda = parseFloat(d.pc.vramBreakdown.cudaOverhead);
-                    const free = parseFloat(d.pc.vramBreakdown.free);
-                    return `
-                      ${ollama > 0 ? '<div style="width:' + (ollama/total*100) + '%;background:var(--blue);transition:width 0.5s" title="Ollama: ' + d.pc.vramBreakdown.ollamaModels + '"></div>' : ''}
-                      ${comfy > 0 ? '<div style="width:' + (comfy/total*100) + '%;background:var(--gold);transition:width 0.5s" title="ComfyUI: ' + d.pc.vramBreakdown.comfyui + '"></div>' : ''}
-                      ${cuda > 0 ? '<div style="width:' + (cuda/total*100) + '%;background:var(--text-dim);transition:width 0.5s" title="CUDA/System: ' + d.pc.vramBreakdown.cudaOverhead + '"></div>' : ''}
-                      <div style="width:${free/total*100}%;background:var(--surface-2);transition:width 0.5s" title="Free: ${d.pc.vramBreakdown.free}"></div>
-                    `;
-                  })()}
+                  ${vramBar(d.pc.vramBreakdown)}
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:11px">
                   ${parseFloat(d.pc.vramBreakdown.ollamaModels) > 0 ? '<span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue);margin-right:4px"></span>Ollama ' + d.pc.vramBreakdown.ollamaModels + '</span>' : ''}
