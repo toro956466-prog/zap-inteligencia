@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T23:16:02+00:00",
+  "lastUpdated": "2026-03-04T23:17:05+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 45,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1357,
+      "ramAvailable": 1353,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1705,
+      "ramAvailable": 1666,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -211,8 +213,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 1633,
-    "messages": 11,
+    "uptime": 1697,
+    "messages": 14,
     "errors": 0,
     "uniqueContacts": 2
   }
