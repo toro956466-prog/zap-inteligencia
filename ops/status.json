@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T22:46:32+00:00",
+  "lastUpdated": "2026-03-04T22:47:35+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 45,
       "temperature": 25.0,
       "ramTotal": 3643,
-      "ramAvailable": 1431,
+      "ramAvailable": 1450,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1708,
+      "ramAvailable": 1682,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -92,8 +92,8 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772664268397,
-      "lastMessage": "Que bom! Que tal um Combo ou um Smash hoje? 😋\nClica aqui pra ver tudo e escolher",
+      "lastActivity": 1772664405707,
+      "lastMessage": "Oi! Tudo bom? 😊\nTem fome de algo? Dá uma olhadinha no cardápio: app.cardapioweb.",
       "lastRole": "assistant"
     },
     {
@@ -213,8 +213,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 30,
-    "messages": 2,
+    "uptime": 93,
+    "messages": 3,
     "errors": 0,
     "uniqueContacts": 25
   }
