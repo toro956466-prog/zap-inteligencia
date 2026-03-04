@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-03T21:14:59-03:00",
+  "lastUpdated": "2026-03-03T21:21:32-03:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -52,17 +52,19 @@
   "restaurants": {
     "clients": [
       {
-        "name": "Mariscão Maceió",
-        "city": "Maceió",
+        "name": "Mariscal Burger",
+        "city": "Catanduva, SP",
         "active": true,
         "phone": "Moto G",
-        "soul": "Restaurante de frutos do mar premium. Atendimento caloroso, foco em experiência do cliente.",
+        "soul": "Hamburgueria artesanal. Atendimento descontraído e jovem. Smash, Premium e Special 360g. Pedidos pelo app.",
         "rules": [
-          "Horário: 11h-23h",
-          "Reservas via WhatsApp",
-          "Cardápio digital",
-          "Promoções terça",
-          "Delivery disponível"
+          "Seg-Dom 18h-23h",
+          "Delivery + retirada",
+          "Pedidos via app",
+          "Sem salão",
+          "@mariscal_burger",
+          "Não confirma pedidos",
+          "Escala reclamações"
         ]
       }
     ]
@@ -73,7 +75,7 @@
       "type": "health",
       "service": "WhatsApp TCL",
       "message": "WhatsApp Business not running on TCL",
-      "time": "2026-03-03T21:14:59-03:00",
+      "time": "2026-03-03T21:21:32-03:00",
       "severity": "warning"
     },
     {
