@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T21:54:56+00:00",
+  "lastUpdated": "2026-03-04T21:55:55+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,11 +7,11 @@
       "battery": 46,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1301,
+      "ramAvailable": 1298,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
-      "droidclaw": false
+      "droidclaw": true
     },
     "tcl": {
       "name": "TCL",
@@ -19,11 +19,11 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1564,
+      "ramAvailable": 1542,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
-      "droidclaw": false
+      "droidclaw": true
     }
   },
   "pc": {
@@ -105,7 +105,7 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 89307,
+    "uptime": 89367,
     "messages": 13,
     "errors": 0,
     "uniqueContacts": 25
