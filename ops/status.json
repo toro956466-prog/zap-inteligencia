@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T22:43:23+00:00",
+  "lastUpdated": "2026-03-04T22:44:26+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 45,
       "temperature": 25.0,
       "ramTotal": 3643,
-      "ramAvailable": 1432,
+      "ramAvailable": 1434,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1721,
+      "ramAvailable": 1714,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -92,9 +92,9 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772663993073,
-      "lastMessage": "Olá! Tudo certo? 🍔\nTem fome de algo saboroso?",
-      "lastRole": "assistant"
+      "lastActivity": 1772664262429,
+      "lastMessage": "Tô com fome",
+      "lastRole": "user"
     },
     {
       "name": "+18018218143",
@@ -213,7 +213,7 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 92214,
+    "uptime": 92277,
     "messages": 23,
     "errors": 0,
     "uniqueContacts": 25
