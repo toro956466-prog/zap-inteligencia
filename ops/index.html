@@ -288,14 +288,64 @@ function render(d) {
         </div>
         ${d.pc.ollama ? `
           <div style="margin-top:10px">
-            <div class="device-detail" style="color:var(--text-muted);font-weight:500">Ollama
-              <span class="status-badge ${d.pc.ollama.running ? 'status-online' : 'status-offline'}" style="margin-left:6px">
-                ${d.pc.ollama.running ? 'Running' : 'Down'}
-              </span>
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+              <div class="device-detail" style="color:var(--text-muted);font-weight:500;margin:0">Ollama
+                <span class="status-badge ${d.pc.ollama.running ? 'status-online' : 'status-offline'}" style="margin-left:6px">
+                  ${d.pc.ollama.running ? 'Running' : 'Down'}
+                </span>
+              </div>
+              ${d.pc.comfyui ? `
+              <div class="device-detail" style="color:var(--text-muted);font-weight:500;margin:0">ComfyUI
+                <span class="status-badge ${d.pc.comfyui.running ? 'status-online' : 'status-offline'}" style="margin-left:6px">
+                  ${d.pc.comfyui.running ? 'Running' : 'Down'}
+                </span>
+              </div>
+              ` : ''}
             </div>
-            <div class="device-detail">VRAM: ${d.pc.ollama.vramUsed || '—'} / ${d.pc.ollama.vramTotal || '—'}</div>
-            <div class="gpu-bar-container">
-              <div class="gpu-label"><span>GPU</span><span>${d.pc.ollama.gpuUsage || 0}%</span></div>
+            ${d.pc.ollama.loadedModels && d.pc.ollama.loadedModels.length ? `
+              <div class="device-detail" style="margin-bottom:4px">
+                Loaded: ${d.pc.ollama.loadedModels.map(m => '<span style="color:var(--blue)">' + m + '</span>').join(', ')}
+              </div>
+            ` : '<div class="device-detail" style="margin-bottom:4px;color:var(--text-dim)">No models loaded</div>'}
+            ${d.pc.comfyui ? `
+              <div class="device-detail" style="margin-bottom:8px">
+                Checkpoint: <span style="color:var(--gold)">${d.pc.comfyui.checkpoint || '—'}</span>
+                (${d.pc.comfyui.torchVram || '—'} VRAM)
+              </div>
+            ` : ''}
+            ${d.pc.vramBreakdown ? `
+              <div style="margin-top:10px;background:var(--surface);border-radius:var(--radius-sm);padding:12px">
+                <div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px">VRAM Breakdown — ${d.pc.vramBreakdown.total}</div>
+                <div style="display:flex;height:20px;border-radius:4px;overflow:hidden;margin-bottom:8px">
+                  ${(() => {
+                    const total = parseFloat(d.pc.vramBreakdown.total);
+                    const ollama = parseFloat(d.pc.vramBreakdown.ollamaModels);
+                    const comfy = parseFloat(d.pc.vramBreakdown.comfyui);
+                    const cuda = parseFloat(d.pc.vramBreakdown.cudaOverhead);
+                    const free = parseFloat(d.pc.vramBreakdown.free);
+                    return `
+                      ${ollama > 0 ? '<div style="width:' + (ollama/total*100) + '%;background:var(--blue);transition:width 0.5s" title="Ollama: ' + d.pc.vramBreakdown.ollamaModels + '"></div>' : ''}
+                      ${comfy > 0 ? '<div style="width:' + (comfy/total*100) + '%;background:var(--gold);transition:width 0.5s" title="ComfyUI: ' + d.pc.vramBreakdown.comfyui + '"></div>' : ''}
+                      ${cuda > 0 ? '<div style="width:' + (cuda/total*100) + '%;background:var(--text-dim);transition:width 0.5s" title="CUDA/System: ' + d.pc.vramBreakdown.cudaOverhead + '"></div>' : ''}
+                      <div style="width:${free/total*100}%;background:var(--surface-2);transition:width 0.5s" title="Free: ${d.pc.vramBreakdown.free}"></div>
+                    `;
+                  })()}
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:11px">
+                  ${parseFloat(d.pc.vramBreakdown.ollamaModels) > 0 ? '<span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--blue);margin-right:4px"></span>Ollama ' + d.pc.vramBreakdown.ollamaModels + '</span>' : ''}
+                  ${parseFloat(d.pc.vramBreakdown.comfyui) > 0 ? '<span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--gold);margin-right:4px"></span>ComfyUI ' + d.pc.vramBreakdown.comfyui + '</span>' : ''}
+                  <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--text-dim);margin-right:4px"></span>System ${d.pc.vramBreakdown.cudaOverhead}</span>
+                  <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--surface-2);margin-right:4px;border:1px solid var(--border)"></span>Free ${d.pc.vramBreakdown.free}</span>
+                </div>
+              </div>
+            ` : `
+              <div class="gpu-bar-container">
+                <div class="gpu-label"><span>VRAM</span><span>${d.pc.ollama.vramUsed || '—'} / ${d.pc.ollama.vramTotal || '—'}</span></div>
+                <div class="gpu-bar"><div class="gpu-bar-fill" style="width:${d.pc.ollama.gpuUsage || 0}%"></div></div>
+              </div>
+            `}
+            <div class="gpu-bar-container" style="margin-top:8px">
+              <div class="gpu-label"><span>GPU Utilization</span><span>${d.pc.ollama.gpuUsage || 0}%</span></div>
               <div class="gpu-bar"><div class="gpu-bar-fill" style="width:${d.pc.ollama.gpuUsage || 0}%"></div></div>
             </div>
           </div>
