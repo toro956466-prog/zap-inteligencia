@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:29:12+00:00",
+  "lastUpdated": "2026-03-05T02:30:15+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 42,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1366,
+      "ramAvailable": 1358,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1615,
+      "ramAvailable": 1619,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,13 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+5517999990001",
+      "messages": 2,
+      "lastActivity": 1772677811188,
+      "lastMessage": "Oi! Tudo bem? Aqui é do Mariscal Burger. Bora ver o que tem de bom pra você hoje",
+      "lastRole": "assistant"
+    },
     {
       "name": "+18018217445",
       "messages": 100,
@@ -184,13 +193,6 @@
       "lastActivity": 1772413680738,
       "lastMessage": "E aí! 🍔 Quer me mostrar o que tem na foto? Se quiser pedir, já te mando o link d",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5515997150547",
-      "messages": 2,
-      "lastActivity": 1772410846806,
-      "lastMessage": "E aí! 🍔 Me mostra o que tem na foto que eu posso te ajudar? Se quiser pedir, é s",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -211,9 +213,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 13223,
-    "messages": 26,
+    "uptime": 23,
+    "messages": 1,
     "errors": 0,
-    "uniqueContacts": 3
+    "uniqueContacts": 26
   }
 }
