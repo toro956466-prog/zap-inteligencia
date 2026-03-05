@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:22:08+00:00",
+  "lastUpdated": "2026-03-05T04:23:11+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 40,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1412,
+      "ramAvailable": 1410,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1552,
+      "ramAvailable": 1541,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -92,8 +92,8 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772684499623,
-      "lastMessage": "Tá! Temos várias promoções válidas hoje. 🤩\nO combo Special + Refri + Batata sai ",
+      "lastActivity": 1772684540803,
+      "lastMessage": "Claro! Tem o Combo Special por R$54,99, Duo Inbox com 2 Smash e batata por R$79,",
       "lastRole": "assistant"
     },
     {
@@ -227,8 +227,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 338,
-    "messages": 6,
+    "uptime": 401,
+    "messages": 7,
     "errors": 0,
     "uniqueContacts": 37
   }
