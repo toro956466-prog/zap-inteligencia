@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:09:25+00:00",
+  "lastUpdated": "2026-03-05T04:10:28+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 40,
       "temperature": 23.0,
       "ramTotal": 3643,
-      "ramAvailable": 1403,
+      "ramAvailable": 1402,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1498,
+      "ramAvailable": 1538,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -92,8 +92,8 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772683738502,
-      "lastMessage": "Sou a atendente do Mariscal Burger! 👋\nVamo deixar de lado o papo e a gente vê qu",
+      "lastActivity": 1772683822934,
+      "lastMessage": "Compreendido! 😄\nQue tal um Kids ou um Crispy Chicken pra ser mais leve? A gente ",
       "lastRole": "assistant"
     },
     {
@@ -227,8 +227,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 4178,
-    "messages": 2,
+    "uptime": 4242,
+    "messages": 4,
     "errors": 0,
     "uniqueContacts": 37
   }
