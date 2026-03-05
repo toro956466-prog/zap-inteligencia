@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:08:21+00:00",
+  "lastUpdated": "2026-03-05T04:09:25+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 40,
       "temperature": 23.0,
       "ramTotal": 3643,
-      "ramAvailable": 1404,
+      "ramAvailable": 1403,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1545,
+      "ramAvailable": 1498,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,13 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+18018217445",
+      "messages": 100,
+      "lastActivity": 1772683738502,
+      "lastMessage": "Sou a atendente do Mariscal Burger! 👋\nVamo deixar de lado o papo e a gente vê qu",
+      "lastRole": "assistant"
+    },
     {
       "name": "+5517999990011",
       "messages": 6,
@@ -179,13 +188,6 @@
       "lastRole": "assistant"
     },
     {
-      "name": "+18018217445",
-      "messages": 100,
-      "lastActivity": 1772664405707,
-      "lastMessage": "Oi! Tudo bom? 😊\nTem fome de algo? Dá uma olhadinha no cardápio: app.cardapioweb.",
-      "lastRole": "assistant"
-    },
-    {
       "name": "+5517981147705",
       "messages": 10,
       "lastActivity": 1772534125264,
@@ -225,8 +227,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 4115,
-    "messages": 0,
+    "uptime": 4178,
+    "messages": 2,
     "errors": 0,
     "uniqueContacts": 37
   }
