@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:31:18+00:00",
+  "lastUpdated": "2026-03-05T02:32:21+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 42,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1358,
+      "ramAvailable": 1357,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1613,
+      "ramAvailable": 1592,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -89,6 +89,20 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+5517999990006",
+      "messages": 2,
+      "lastActivity": 1772677931765,
+      "lastMessage": "Entendi! Vou passar pro responsável e já te retornam, tá? 🙏",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990005",
+      "messages": 1,
+      "lastActivity": 1772677897924,
+      "lastMessage": "Veio errado meu pedido, tô puto",
+      "lastRole": "user"
+    },
     {
       "name": "+5517999990004",
       "messages": 2,
@@ -193,20 +207,6 @@
       "lastActivity": 1772488392929,
       "lastMessage": "Sou da equipe do Mariscal! 🍔 Como posso te ajudar hoje?",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517996288200",
-      "messages": 32,
-      "lastActivity": 1772487418210,
-      "lastMessage": "Aceitamos PIX, cartão de crédito e débito! 💳💸",
-      "lastRole": "assistant"
-    },
-    {
-      "name": "1missedvideocall",
-      "messages": 2,
-      "lastActivity": 1772481629686,
-      "lastMessage": "E aí! Tudo bom? 😄\nSe quiser ver o cardápio completo ou fazer seu pedido, é só ac",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -227,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 86,
-    "messages": 6,
+    "uptime": 19,
+    "messages": 1,
     "errors": 0,
-    "uniqueContacts": 29
+    "uniqueContacts": 31
   }
 }
