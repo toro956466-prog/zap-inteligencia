@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T11:00:49+00:00",
+  "lastUpdated": "2026-03-05T11:01:52+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 34,
       "temperature": 23.0,
       "ramTotal": 3643,
-      "ramAvailable": 1432,
+      "ramAvailable": 1431,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1641,
+      "ramAvailable": 1643,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,20 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+5517999990098",
+      "messages": 2,
+      "lastActivity": 1772708510158,
+      "lastMessage": "Opa! Não a gente não, fechadão na segunda-feira. 🙅‍♂️\n\nMas o sábado e domingo a ",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990099",
+      "messages": 2,
+      "lastActivity": 1772708502463,
+      "lastMessage": "Opa! A gente atende de terça a domingo. De terça a quinta é das 18:00 às 23:00, ",
+      "lastRole": "assistant"
+    },
     {
       "name": "+18018217445",
       "messages": 100,
@@ -191,20 +207,6 @@
       "lastActivity": 1772534125264,
       "lastMessage": "Que sua manhã seja cheia de luz e propósito! 🙏✨ Que seu dia seja de muitas bençã",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5519983233049",
-      "messages": 4,
-      "lastActivity": 1772529272804,
-      "lastMessage": "Aqui! 😎 Parece uma delícia. Quer saber qual combina mais com o seu humor hoje ou",
-      "lastRole": "assistant"
-    },
-    {
-      "name": "+5517999999994",
-      "messages": 2,
-      "lastActivity": 1772498883172,
-      "lastMessage": "Não tenho essa informação específica, mas podemos confirmar os detalhes no app! ",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -225,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 24258,
-    "messages": 13,
+    "uptime": 23,
+    "messages": 2,
     "errors": 0,
-    "uniqueContacts": 37
+    "uniqueContacts": 39
   }
 }
