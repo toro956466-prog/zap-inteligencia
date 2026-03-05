@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:30:15+00:00",
+  "lastUpdated": "2026-03-05T02:31:18+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1619,
+      "ramAvailable": 1613,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -90,10 +90,31 @@
   },
   "conversations": [
     {
-      "name": "+5517999990001",
+      "name": "+5517999990004",
       "messages": 2,
-      "lastActivity": 1772677811188,
-      "lastMessage": "Oi! Tudo bem? Aqui é do Mariscal Burger. Bora ver o que tem de bom pra você hoje",
+      "lastActivity": 1772677866593,
+      "lastMessage": "Entendi o seu abalo, opa! Isso não tá na hora.\n\nDeixa eu ver aqui no que acontec",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990003",
+      "messages": 2,
+      "lastActivity": 1772677858592,
+      "lastMessage": "Que isso! Sou do time do Mariscal Burger. Como posso te ajudar? 🍔",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990002",
+      "messages": 2,
+      "lastActivity": 1772677850079,
+      "lastMessage": "Oi! Sim, entregamos no Jardim América, cobra R$ 5 de taxa.\n\nQuer fazer o seu ped",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990001",
+      "messages": 6,
+      "lastActivity": 1772677829561,
+      "lastMessage": "Tô checando agora! Aqui na Catanduva, a gente entrega pro Jardim América, mas pr",
       "lastRole": "assistant"
     },
     {
@@ -186,13 +207,6 @@
       "lastActivity": 1772481629686,
       "lastMessage": "E aí! Tudo bom? 😄\nSe quiser ver o cardápio completo ou fazer seu pedido, é só ac",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517988360240",
-      "messages": 2,
-      "lastActivity": 1772413680738,
-      "lastMessage": "E aí! 🍔 Quer me mostrar o que tem na foto? Se quiser pedir, já te mando o link d",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -213,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 23,
-    "messages": 1,
+    "uptime": 86,
+    "messages": 6,
     "errors": 0,
-    "uniqueContacts": 26
+    "uniqueContacts": 29
   }
 }
