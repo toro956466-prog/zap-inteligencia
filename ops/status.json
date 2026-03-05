@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:56:41+00:00",
+  "lastUpdated": "2026-03-05T02:57:44+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 41,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1352,
+      "ramAvailable": 1345,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 26.0,
       "ramTotal": 3663,
-      "ramAvailable": 1522,
+      "ramAvailable": 1537,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,13 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+5517999990010",
+      "messages": 1,
+      "lastActivity": 1772679459926,
+      "lastMessage": "Meu lanche veio todo errado, pedi sem cebola e veio cheio de cebola. Absurdo!",
+      "lastRole": "user"
+    },
     {
       "name": "+18018218143",
       "messages": 29,
@@ -198,13 +207,6 @@
       "lastActivity": 1772498877530,
       "lastMessage": "Não temos essa informação por aqui! 🍔 A gente entrega na região e a taxa é consu",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517999999997",
-      "messages": 2,
-      "lastActivity": 1772498838887,
-      "lastMessage": "E aí! 👋 Não temos valor mínimo para o pedido, vai tudo que quiser pro carrinho! ",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -225,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 536,
-    "messages": 2,
+    "uptime": 14,
+    "messages": 0,
     "errors": 0,
-    "uniqueContacts": 34
+    "uniqueContacts": 35
   }
 }
