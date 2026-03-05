@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T11:20:49+00:00",
+  "lastUpdated": "2026-03-05T11:21:51+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1632,
+      "ramAvailable": 1573,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -90,6 +90,27 @@
   },
   "conversations": [
     {
+      "name": "+5517999990055",
+      "messages": 2,
+      "lastActivity": 1772709683378,
+      "lastMessage": "Oi! Estamos fechados agora. Voltamos hoje às 18h! 🍔",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+18018218143",
+      "messages": 39,
+      "lastActivity": 1772709670356,
+      "lastMessage": "✅ Enviado pro cliente (+5517999990009):\n\"Oi! Nossa, que situação não é mesmo, de",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990009",
+      "messages": 3,
+      "lastActivity": 1772709670353,
+      "lastMessage": "Oi! Nossa, que situação não é mesmo, deixa eu resolver isso pra você agora mesmo",
+      "lastRole": "assistant"
+    },
+    {
       "name": "+5517999990066",
       "messages": 2,
       "lastActivity": 1772709550817,
@@ -132,13 +153,6 @@
       "lastRole": "assistant"
     },
     {
-      "name": "+18018218143",
-      "messages": 35,
-      "lastActivity": 1772679564838,
-      "lastMessage": "Pronto, atendente ativo de novo pra esse cliente (+5517999990011).",
-      "lastRole": "assistant"
-    },
-    {
       "name": "+5517999990012",
       "messages": 2,
       "lastActivity": 1772679552847,
@@ -150,13 +164,6 @@
       "messages": 3,
       "lastActivity": 1772679504803,
       "lastMessage": "Ops, tudo bem? Que pena que o lanche não veio como você pediu, muito obrigado po",
-      "lastRole": "assistant"
-    },
-    {
-      "name": "+5517999990009",
-      "messages": 2,
-      "lastActivity": 1772678875812,
-      "lastMessage": "Entendi! Vou passar pro responsável e já te retornam, tá? 🙏",
       "lastRole": "assistant"
     },
     {
@@ -234,9 +241,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 9,
-    "messages": 0,
+    "uptime": 71,
+    "messages": 1,
     "errors": 0,
-    "uniqueContacts": 41
+    "uniqueContacts": 42
   }
 }
