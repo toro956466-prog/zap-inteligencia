@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:53:33+00:00",
+  "lastUpdated": "2026-03-05T02:54:36+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 41,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1359,
+      "ramAvailable": 1356,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -17,9 +17,9 @@
       "name": "TCL",
       "online": true,
       "battery": 100,
-      "temperature": 25.0,
+      "temperature": 26.0,
       "ramTotal": 3663,
-      "ramAvailable": 1541,
+      "ramAvailable": 1505,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,13 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+18018218143",
+      "messages": 29,
+      "lastActivity": 1772679272026,
+      "lastMessage": "Blz! Se precisar de ajuda pra montar o pedido ou tiver alguma dúvida, é só chama",
+      "lastRole": "assistant"
+    },
     {
       "name": "+5517999990009",
       "messages": 2,
@@ -158,13 +167,6 @@
       "lastRole": "assistant"
     },
     {
-      "name": "+18018218143",
-      "messages": 27,
-      "lastActivity": 1772572725567,
-      "lastMessage": "Ficou no aguardo, né? 😎 Bora arrasar com o combo ou com um smash aqui na Marisca",
-      "lastRole": "assistant"
-    },
-    {
       "name": "+5517981147705",
       "messages": 10,
       "lastActivity": 1772534125264,
@@ -225,8 +227,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 347,
-    "messages": 1,
+    "uptime": 410,
+    "messages": 2,
     "errors": 0,
     "uniqueContacts": 34
   }
