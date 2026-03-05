@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:56:59+00:00",
+  "lastUpdated": "2026-03-05T04:58:03+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1572,
+      "ramAvailable": 1562,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -90,8 +92,8 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772684762312,
-      "lastMessage": "Beleza! Já vou passando o cardápio pra você aqui na conversa. 📱\nFica tranquilo, ",
+      "lastActivity": 1772686682712,
+      "lastMessage": "Aqui está o link pra você dar uma olhada completa: app.cardapioweb.com/mariscal_",
       "lastRole": "assistant"
     },
     {
@@ -225,8 +227,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 2428,
-    "messages": 8,
+    "uptime": 2492,
+    "messages": 9,
     "errors": 0,
     "uniqueContacts": 37
   }
