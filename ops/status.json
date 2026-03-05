@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T11:27:07+00:00",
+  "lastUpdated": "2026-03-05T11:28:09+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 34,
       "temperature": 23.0,
       "ramTotal": 3643,
-      "ramAvailable": 1441,
+      "ramAvailable": 1439,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1581,
+      "ramAvailable": 1599,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -90,8 +92,8 @@
     {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772709887816,
-      "lastMessage": "Puxa",
+      "lastActivity": 1772710029269,
+      "lastMessage": "Tenho problema \nPreciso falar com alguém! Purra",
       "lastRole": "user"
     },
     {
@@ -239,7 +241,7 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 387,
+    "uptime": 450,
     "messages": 2,
     "errors": 0,
     "uniqueContacts": 42
