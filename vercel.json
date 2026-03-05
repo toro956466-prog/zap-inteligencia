@@ -1,6 +1,6 @@
 {
-  "cleanUrls": false,
-  "trailingSlash": false,
+  "cleanUrls": true,
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/ops/status.json",
