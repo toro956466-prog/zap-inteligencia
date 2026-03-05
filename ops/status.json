@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-03-05T04:14:42+00:00",
+  "lastUpdated": "2026-03-05T04:15:45+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
       "online": true,
       "battery": 40,
-      "temperature": 23.0,
+      "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1406,
+      "ramAvailable": 1401,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1529,
+      "ramAvailable": 1530,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -225,7 +225,7 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 4496,
+    "uptime": 4559,
     "messages": 6,
     "errors": 0,
     "uniqueContacts": 37
