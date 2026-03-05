@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:58:47+00:00",
+  "lastUpdated": "2026-03-05T02:59:50+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 41,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1352,
+      "ramAvailable": 1349,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 26.0,
       "ramTotal": 3663,
-      "ramAvailable": 1494,
+      "ramAvailable": 1552,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -91,16 +91,23 @@
   "conversations": [
     {
       "name": "+5517999990011",
-      "messages": 2,
-      "lastActivity": 1772679521364,
-      "lastMessage": "Entendi! Vou passar pro responsável e já te retornam, tá? 🙏",
+      "messages": 6,
+      "lastActivity": 1772679571070,
+      "lastMessage": "Tô aqui! O clássico é bem pedido mesmo. Vamos de Smash Clássico com mussarela? 🍔",
       "lastRole": "assistant"
     },
     {
       "name": "+18018218143",
-      "messages": 31,
-      "lastActivity": 1772679504805,
-      "lastMessage": "✅ Enviado pro cliente (+5517999990010):\n\"Ops, tudo bem? Que pena que o lanche nã",
+      "messages": 35,
+      "lastActivity": 1772679564838,
+      "lastMessage": "Pronto, atendente ativo de novo pra esse cliente (+5517999990011).",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990012",
+      "messages": 2,
+      "lastActivity": 1772679552847,
+      "lastMessage": "Oi! A gente está aberto e funcionando normal. Mando o cardápio pra você dar uma ",
       "lastRole": "assistant"
     },
     {
@@ -200,13 +207,6 @@
       "lastActivity": 1772498883172,
       "lastMessage": "Não tenho essa informação específica, mas podemos confirmar os detalhes no app! ",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517999999995",
-      "messages": 2,
-      "lastActivity": 1772498880322,
-      "lastMessage": "Não temos essa informação agora, mas o valor aparece direto no nosso app! 🔍 Conf",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -227,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 77,
-    "messages": 2,
+    "uptime": 4,
+    "messages": 0,
     "errors": 0,
-    "uniqueContacts": 36
+    "uniqueContacts": 37
   }
 }
