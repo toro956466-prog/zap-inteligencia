@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T11:18:42+00:00",
+  "lastUpdated": "2026-03-05T11:19:45+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 24.0,
       "ramTotal": 3663,
-      "ramAvailable": 1593,
+      "ramAvailable": 1618,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -87,6 +89,20 @@
     ]
   },
   "conversations": [
+    {
+      "name": "+5517999990066",
+      "messages": 2,
+      "lastActivity": 1772709550817,
+      "lastMessage": "Oi! Estamos fechados agora. Voltamos hoje às 18h! 🍔",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990077",
+      "messages": 3,
+      "lastActivity": 1772709543751,
+      "lastMessage": "E o cardápio?",
+      "lastRole": "user"
+    },
     {
       "name": "+18018217445",
       "messages": 100,
@@ -198,13 +214,6 @@
       "lastActivity": 1772677829561,
       "lastMessage": "Tô checando agora! Aqui na Catanduva, a gente entrega pro Jardim América, mas pr",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517981147705",
-      "messages": 10,
-      "lastActivity": 1772534125264,
-      "lastMessage": "Que sua manhã seja cheia de luz e propósito! 🙏✨ Que seu dia seja de muitas bençã",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -225,9 +234,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 1,
-    "messages": 0,
+    "uptime": 64,
+    "messages": 2,
     "errors": 0,
-    "uniqueContacts": 39
+    "uniqueContacts": 41
   }
 }
