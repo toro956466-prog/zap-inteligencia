@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T02:57:44+00:00",
+  "lastUpdated": "2026-03-05T02:58:47+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
@@ -7,7 +7,7 @@
       "battery": 41,
       "temperature": 24.0,
       "ramTotal": 3643,
-      "ramAvailable": 1345,
+      "ramAvailable": 1352,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 26.0,
       "ramTotal": 3663,
-      "ramAvailable": 1537,
+      "ramAvailable": 1494,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -90,17 +90,24 @@
   },
   "conversations": [
     {
-      "name": "+5517999990010",
-      "messages": 1,
-      "lastActivity": 1772679459926,
-      "lastMessage": "Meu lanche veio todo errado, pedi sem cebola e veio cheio de cebola. Absurdo!",
-      "lastRole": "user"
+      "name": "+5517999990011",
+      "messages": 2,
+      "lastActivity": 1772679521364,
+      "lastMessage": "Entendi! Vou passar pro responsável e já te retornam, tá? 🙏",
+      "lastRole": "assistant"
     },
     {
       "name": "+18018218143",
-      "messages": 29,
-      "lastActivity": 1772679272026,
-      "lastMessage": "Blz! Se precisar de ajuda pra montar o pedido ou tiver alguma dúvida, é só chama",
+      "messages": 31,
+      "lastActivity": 1772679504805,
+      "lastMessage": "✅ Enviado pro cliente (+5517999990010):\n\"Ops, tudo bem? Que pena que o lanche nã",
+      "lastRole": "assistant"
+    },
+    {
+      "name": "+5517999990010",
+      "messages": 3,
+      "lastActivity": 1772679504803,
+      "lastMessage": "Ops, tudo bem? Que pena que o lanche não veio como você pediu, muito obrigado po",
       "lastRole": "assistant"
     },
     {
@@ -200,13 +207,6 @@
       "lastActivity": 1772498880322,
       "lastMessage": "Não temos essa informação agora, mas o valor aparece direto no nosso app! 🔍 Conf",
       "lastRole": "assistant"
-    },
-    {
-      "name": "+5517999999996",
-      "messages": 2,
-      "lastActivity": 1772498877530,
-      "lastMessage": "Não temos essa informação por aqui! 🍔 A gente entrega na região e a taxa é consu",
-      "lastRole": "assistant"
     }
   ],
   "errors": [
@@ -227,9 +227,9 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 14,
-    "messages": 0,
+    "uptime": 77,
+    "messages": 2,
     "errors": 0,
-    "uniqueContacts": 35
+    "uniqueContacts": 36
   }
 }
