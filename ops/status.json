@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-03-05T18:23:22+00:00",
+  "lastUpdated": "2026-03-05T18:24:25+00:00",
   "phones": {
     "motoG": {
       "name": "Moto G",
       "online": true,
       "battery": 40,
-      "temperature": 28.0,
+      "temperature": 26.0,
       "ramTotal": 3643,
-      "ramAvailable": 1274,
+      "ramAvailable": 1268,
       "whatsappRunning": true,
       "storage": "16G/109G",
       "adbAddress": "100.111.83.8:38641",
@@ -19,7 +19,7 @@
       "battery": 100,
       "temperature": 25.0,
       "ramTotal": 3663,
-      "ramAvailable": 1614,
+      "ramAvailable": 1597,
       "whatsappRunning": true,
       "storage": "15G/45G",
       "adbAddress": "100.73.184.62:44411",
@@ -47,9 +47,11 @@
     "ollama": {
       "running": true,
       "gpuUsage": 6,
-      "vramUsed": "0GB",
+      "vramUsed": "9.8GB",
       "vramTotal": "25.7GB",
-      "loadedModels": []
+      "loadedModels": [
+        "qwen3.5:9b"
+      ]
     },
     "comfyui": {
       "running": true,
@@ -60,10 +62,10 @@
     },
     "vramBreakdown": {
       "total": "25.7GB",
-      "ollamaModels": "0GB",
+      "ollamaModels": "9.8GB",
       "comfyui": "0GB",
-      "cudaOverhead": "1.6GB",
-      "free": "24.1GB"
+      "cudaOverhead": "0.0GB",
+      "free": "15.9GB"
     }
   },
   "restaurants": {
@@ -88,9 +90,16 @@
   },
   "conversations": [
     {
+      "name": "+5515997150547",
+      "messages": 4,
+      "lastActivity": 1772735043856,
+      "lastMessage": "Oi! Estamos fechados agora. Voltamos hoje às 18h! 🍔",
+      "lastRole": "assistant"
+    },
+    {
       "name": "+18018217445",
       "messages": 100,
-      "lastActivity": 1772715453181,
+      "lastActivity": 1772735041874,
       "lastMessage": "Oii",
       "lastRole": "user"
     },
@@ -239,8 +248,8 @@
   ],
   "proxy": {
     "running": true,
-    "uptime": 22392,
-    "messages": 0,
+    "uptime": 22455,
+    "messages": 1,
     "errors": 0,
     "uniqueContacts": 42
   }
